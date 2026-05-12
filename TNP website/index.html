@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tim Newnham Psychology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E8C97A;
+            --dark: #0A0A0A;
+            --storm: #1a1f2e;
+            --text: #F0EAD6;
+            --text-muted: #8a8070;
+            --nav-height: 70px;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            background: var(--dark);
+            color: var(--text);
+            font-family: 'Crimson Pro', Georgia, serif;
+        }
+
+        /* ── NAVIGATION ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3rem;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+            transition: background 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10,10,10,0.97);
+            border-bottom: 1px solid rgba(201,168,76,0.15);
+        }
+
+        .nav-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+.nav-burger {
+    display: none;
+}
+        .nav-login {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--dark);
+            background: var(--gold);
+            padding: 0.5rem 1.2rem;
+            text-decoration: none;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-login:hover {
+            background: var(--gold-light);
+        }
+
+        /* ── HERO SECTION ── */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        /* Desktop image */
+        .hero-img-desktop {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        /* Mobile image */
+        .hero-img-mobile {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: none;
+        }
+
+        /* Dark overlay — lightens on hover per zone */
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.35);
+            transition: background 0.5s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Three clickable hit zones */
+        .hero-zones {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            z-index: 3;
+        }
+
+        .zone {
+            flex: 1;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        /* Per-zone dark masks that fade out on sibling hover */
+        .zone::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0);
+            transition: background 0.5s ease;
+            pointer-events: none;
+        }
+
+        /* When ANY zone is hovered, darken all others */
+        .hero-zones:has(.zone:hover) .zone:not(:hover)::before {
+            background: rgba(0,0,0,0.65);
+        }
+
+        /* Golden ring effect on hovered figure */
+        .zone:hover .zone-ring {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .zone-ring {
+            position: absolute;
+            bottom: 25%;
+            left: 50%;
+            transform: translateX(-50%) scale(0.85);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 30px rgba(201,168,76,0.4), inset 0 0 30px rgba(201,168,76,0.1);
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
+        }
+
+        /* Zone-specific ring positions to align with figures */
+        .zone-boy .zone-ring {
+            bottom: 20%;
+            left: 30%;
+            width: 90px;
+            height: 90px;
+        }
+
+        .zone-guide .zone-ring {
+            bottom: 22%;
+            left: 50%;
+            width: 130px;
+            height: 130px;
+        }
+
+        .zone-cairn .zone-ring {
+            bottom: 18%;
+            left: 65%;
+            width: 80px;
+            height: 80px;
+        }
+
+        /* Zone labels that appear on hover */
+        .zone-label {
+            position: absolute;
+            bottom: 12%;
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            white-space: nowrap;
+            pointer-events: none;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .zone:hover .zone-label {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Hero title */
+        .hero-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 4;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .hero-zones:has(.zone:hover) ~ .hero-title,
+        .hero-title.hidden {
+            opacity: 0;
+        }
+
+        .hero-title h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 4vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--text);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.9);
+            line-height: 1.1;
+        }
+
+        .hero-title .subtitle {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--gold-light);
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        /* Scroll hint */
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.5;
+            animation: fadeInUp 2s ease 1.5s both;
+        }
+
+        .scroll-hint span {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .scroll-arrow {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollPulse 2s ease infinite;
+        }
+
+        /* ── CONTENT SECTIONS ── */
+        .section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+        }
+
+        .section-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
+        .section p {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            font-weight: 300;
+            line-height: 1.9;
+            color: #c8bfaa;
+            max-width: 680px;
+        }
+
+        .section p + p {
+            margin-top: 1.5rem;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 0 auto;
+            opacity: 0.4;
+        }
+
+        /* CTA button */
+        .cta-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--dark);
+            background: var(--gold);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                .nav-burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.nav-burger span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+    transition: all 0.3s ease;
+}
+
+.nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: var(--nav-height);
+    left: 0; right: 0;
+    background: rgba(10,10,10,0.98);
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+            }
+
+            .hero-img-desktop {
+                display: none;
+            }
+
+            .hero-img-mobile {
+                display: block;
+            }
+
+            /* On mobile, stack zones vertically */
+            .hero-zones {
+                flex-direction: column;
+            }
+
+            .zone-ring {
+                left: 50% !important;
+                bottom: 30% !important;
+            }
+
+            .hero-title h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Page load fade in */
+        body {
+            animation: bodyFade 1s ease both;
+        }
+
+        @keyframes bodyFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">Tim Newnham Psychology</a>
+        <ul class="nav-links">
+            <li><a href="for-you.html" id="nav-for-you">For You</a></li>
+<li><a href="about.html" id="nav-about">About</a></li>
+<li><a href="methods.html" id="nav-methods">Methods</a></li>
+<li><a href="pricing.html" id="nav-pricing">Pricing</a></li>
+        </ul>
+        <button class="nav-burger" id="navBurger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+        <a href="login.html" class="nav-login">Portal</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+
+        <!-- Images — swap based on screen size via CSS -->
+        <img 
+            src="images/hero-desktop.png" 
+            alt="A young man in disarray, a guide extending his hand, a cairn of stones" 
+            class="hero-img-desktop"
+        >
+        <img 
+            src="images/hero-mobile.jpg" 
+            alt="A young man in disarray, a guide extending his hand, a cairn of stones" 
+            class="hero-img-mobile"
+        >
+
+        <div class="hero-overlay"></div>
+
+        <!-- Three interactive zones -->
+        <div class="hero-zones" id="heroZones">
+
+            <div class="zone zone-boy" data-nav="nav-for-you" data-href="#for-you">
+                <div class="zone-ring"></div>
+                <div class="zone-label">For You</div>
+            </div>
+
+            <div class="zone zone-guide" data-nav="nav-about" data-href="#about">
+                <div class="zone-ring"></div>
+                <div class="zone-label">The Guide</div>
+            </div>
+
+            <div class="zone zone-cairn" data-nav="nav-methods" data-href="#methods">
+                <div class="zone-ring"></div>
+                <div class="zone-label">The Methods</div>
+            </div>
+
+        </div>
+
+        <!-- Hero title — fades on zone hover -->
+        <div class="hero-title" id="heroTitle">
+            <h1>Tim Newnham<br>Psychology</h1>
+            <p class="subtitle">The path from boy to man has always required a guide.</p>
+        </div>
+
+        <div class="scroll-hint">
+            <span>Enter</span>
+            <div class="scroll-arrow"></div>
+        </div>
+
+    </section>
+
+    <!-- FOR YOU SECTION -->
+    <section class="section" id="for-you">
+        <span class="section-label">Who This Is For</span>
+        <h2>You know something has to change.</h2>
+        <p>Whether you're 15 or 30, there's a version of yourself you haven't become yet. Not because you lack ability — but because no one has shown you the path, or held you accountable to walking it.</p>
+        <p>This programme is for young men who are lost, stuck, or quietly struggling. Who sense there is more to who they could be, but don't know how to get there.</p>
+        <a href="for-you.html" class="cta-btn">Who This Is For</a>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ABOUT SECTION -->
+    <section class="section" id="about">
+        <span class="section-label">Who I Am</span>
+        <h2>I have walked this path.</h2>
+        <p>I'm Tim Newnham — Australian, former infantry soldier, fitness coach, and psychology student at the University of Groningen. My own road from disarray to direction wasn't clean or linear. It required people who refused to let me stay where I was.</p>
+        <p>That experience — combined with formal training in psychology — is what I bring to this work.</p>
+        <a href="about.html" class="cta-btn">Read My Story</a>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- METHODS SECTION -->
+    <section class="section" id="methods">
+        <span class="section-label">The Methods</span>
+        <h2>Built on what works.</h2>
+        <p>The cairn is an ancient symbol — each stone placed by those who came before, marking the way for those who follow. This programme draws on the same principle: a foundation of proven frameworks, layered with intention.</p>
+        <p>Jungian psychology, Stoic philosophy, the Hero's Journey, Self-Determination Theory, DBT, and the initiation structures of Van Gennep. Nothing invented. Everything tested.</p>
+        <a href="methods.html" class="cta-btn">Explore the Methods</a>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PRICING SECTION -->
+    <section class="section" id="pricing">
+        <span class="section-label">Pricing & Contact</span>
+        <h2>Ready to begin?</h2>
+        <p>The programme runs for 12 weeks, one-on-one. Enquire below to discuss whether this is the right fit — for you, or for someone you care about.</p>
+        <a href="pricing.html" class="cta-btn">Get in Touch</a>
+    </section>
+
+    <script>
+        function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('open');
+}
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Zone click — navigate and highlight nav link
+        const zones = document.querySelectorAll('.zone');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        zones.forEach(zone => {
+            zone.addEventListener('click', () => {
+                const targetHref = zone.dataset.href;
+                const targetNav = zone.dataset.nav;
+
+                // Highlight corresponding nav link
+                navLinks.forEach(link => link.classList.remove('active'));
+                const activeLink = document.getElementById(targetNav);
+                if (activeLink) activeLink.classList.add('active');
+
+                // Smooth scroll to section
+                const target = document.querySelector(targetHref);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Update active nav on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    navLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(s => observer.observe(s));
+    </script>
+
+</body>
+</html>

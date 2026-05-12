@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who This Is For — Tim Newnham Psychology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E8C97A;
+            --dark: #0A0A0A;
+            --text: #F0EAD6;
+            --text-muted: #8a8070;
+            --nav-height: 70px;
+        }
+
+        html, body {
+            width: 100%;
+            background: var(--dark);
+            color: var(--text);
+            font-family: 'Crimson Pro', Georgia, serif;
+            animation: bodyFade 1s ease both;
+        }
+
+        @keyframes bodyFade { from { opacity: 0; } to { opacity: 1; } }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: var(--nav-height);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3rem;
+            background: rgba(10,10,10,0.97);
+            border-bottom: 1px solid rgba(201,168,76,0.15);
+        }
+
+        .nav-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-login {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--dark);
+            background: var(--gold);
+            padding: 0.5rem 1.2rem;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .nav-login:hover { background: var(--gold-light); }
+
+        .page-hero {
+            width: 100%;
+            padding-top: calc(var(--nav-height) + 6rem);
+            padding-bottom: 4rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 60px; height: 1px;
+            background: var(--gold);
+            opacity: 0.4;
+        }
+
+        .page-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            line-height: 1.15;
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .page-hero .intro {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .content {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 6rem 2rem 10rem;
+        }
+
+        /* Signs section */
+        .signs {
+            margin-bottom: 6rem;
+        }
+
+        .signs h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 3rem;
+        }
+
+        .sign-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .sign-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(201,168,76,0.12);
+            transition: border-color 0.3s ease;
+        }
+
+        .sign-item:hover {
+            border-color: rgba(201,168,76,0.35);
+        }
+
+        .sign-icon {
+            color: var(--gold);
+            font-size: 1rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .sign-item p {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: #c8bfaa;
+        }
+
+        .chapter-divider {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 4rem 0;
+            opacity: 0.3;
+        }
+
+        .chapter-divider::before,
+        .chapter-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .chapter-divider span {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            color: var(--gold);
+        }
+
+        /* Programmes */
+        .programmes {
+            margin-bottom: 6rem;
+        }
+
+        .programmes h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.8rem;
+        }
+
+        .programmes .intro-text {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .programme-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .programme-card {
+            padding: 2.5rem;
+            border: 1px solid rgba(201,168,76,0.15);
+            position: relative;
+            transition: border-color 0.3s ease;
+        }
+
+        .programme-card:hover {
+            border-color: rgba(201,168,76,0.4);
+        }
+
+        .programme-card.featured {
+            border-color: rgba(201,168,76,0.35);
+        }
+
+        .programme-card.featured::before {
+            content: 'Most Chosen';
+            position: absolute;
+            top: -1px; right: 2rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--dark);
+            background: var(--gold);
+            padding: 0.3rem 0.8rem;
+        }
+
+        .card-tier {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1.2rem;
+        }
+
+        .card-desc {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: #c8bfaa;
+            margin-bottom: 2rem;
+        }
+
+        .card-price {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .card-price-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .card-features li {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #c8bfaa;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(201,168,76,0.08);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .card-features li::before {
+            content: '—';
+            color: var(--gold);
+            opacity: 0.6;
+            flex-shrink: 0;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--dark);
+            background: var(--gold);
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .cta-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .cta-btn.outline {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid rgba(201,168,76,0.4);
+        }
+
+        .cta-btn.outline:hover {
+            background: rgba(201,168,76,0.08);
+        }
+
+        /* Also weekly */
+        .weekly {
+            margin-top: 2rem;
+            padding: 2rem;
+            border: 1px solid rgba(201,168,76,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .weekly-text h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+        }
+
+        .weekly-text p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .weekly-price {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            white-space: nowrap;
+        }
+
+        .weekly-price span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'Crimson Pro', serif;
+            font-weight: 300;
+        }
+
+        /* Pull quote */
+        .pull-quote {
+            border-left: 2px solid var(--gold);
+            padding: 0.5rem 0 0.5rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .pull-quote p {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            font-style: italic;
+            font-weight: 300;
+            color: var(--gold-light);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 0 1.5rem; }
+            .nav-links { display: none; }
+            .sign-list { grid-template-columns: 1fr; }
+            .programme-cards { grid-template-columns: 1fr; }
+            .weekly { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo">Tim Newnham Psychology</a>
+        <ul class="nav-links">
+            <li><a href="for-you.html">For You</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="methods.html">Methods</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+        </ul>
+        <a href="login.html" class="nav-login">Portal</a>
+    </nav>
+
+    <div class="page-hero">
+        <span class="page-label">Who This Is For</span>
+        <h1>Something in you knows it's time.</h1>
+        <p class="intro">This programme is for young men who are ready to stop drifting — and willing to do the work that moving forward actually requires.</p>
+    </div>
+
+    <div class="content">
+
+        <!-- Signs -->
+        <div class="signs">
+            <h2>You might recognise yourself here.</h2>
+            <ul class="sign-list">
+                <li class="sign-item">
+                    <span class="sign-icon">✦</span>
+                    <p>You feel stuck — like everyone around you is moving forward and you're standing still.</p>
+                </li>
+                <li class="sign-item">
+                    <span class="sign-icon">✦</span>
+                    <p>You know what you should be doing, but you can't seem to make yourself do it consistently.</p>
+                </li>
+                <li class="sign-item">
+                    <span class="sign-icon">✦</span>
+                    <p>You've lost — or never found — a clear sense of who you are and what you stand for.</p>
+                </li>
+                <li class="sign-item">
+                    <span class="sign-icon">✦</span>
+                    <p>Anger, withdrawal, numbness, or anxiety are becoming your defaults.</p>
+                </li>
+                <li class="sign-item">
+                    <span class="sign-icon">✦</span>
+                    <p>You're performing fine on the outside while something is quietly falling apart on the inside.</p>
+                </li>
+                <li class="sign-item">
+                    <span class="sign-icon">✦</span>
+                    <p>You want to be challenged — not managed, not medicated, not told it's fine.</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="pull-quote">
+            <p>This is not therapy. It is not a quick fix. It is a structured passage — from where you are, to who you are capable of becoming.</p>
+        </div>
+
+        <div class="chapter-divider"><span>✦</span></div>
+
+        <!-- Programmes -->
+        <div class="programmes">
+            <h2>Two paths. One direction.</h2>
+            <p class="intro-text">The programme is offered in two forms — not based on age, but on readiness and depth of commitment.</p>
+
+            <div class="programme-cards">
+
+                <div class="programme-card">
+                    <span class="card-tier">Path One</span>
+                    <div class="card-name">The Light</div>
+                    <p class="card-desc">A structured introduction to the frameworks, habits, and psychological tools that form the foundation of the programme. Demanding, but accessible. Designed for those taking their first serious step.</p>
+                    <div class="card-price">€1,500</div>
+                    <p class="card-price-note">Full 14-week programme</p>
+                    <ul class="card-features">
+                        <li>14 weeks of structured coaching</li>
+                        <li>Weekly one-on-one sessions</li>
+                        <li>Daily journal access via app</li>
+                        <li>Core framework education</li>
+                        <li>Physical challenge component</li>
+                    </ul>
+                    <a href="pricing.html" class="cta-btn outline">Learn More</a>
+                </div>
+
+                <div class="programme-card featured">
+                    <span class="card-tier">Path Two</span>
+                    <div class="card-name">The Deep</div>
+                    <p class="card-desc">The full initiation. Psychologically demanding, physically rigorous, and culminating in the Crucible — a final experience that marks a real threshold crossed. For those who are ready to go all the way.</p>
+                    <div class="card-price">€1,500</div>
+                    <p class="card-price-note">Full 14-week programme</p>
+                    <ul class="card-features">
+                        <li>Everything in The Light</li>
+                        <li>Deeper Jungian shadow work</li>
+                        <li>Full Crucible experience</li>
+                        <li>Extended reflection framework</li>
+                        <li>Post-programme integration support</li>
+                    </ul>
+                    <a href="pricing.html" class="cta-btn">Learn More</a>
+                </div>
+
+            </div>
+
+            <div class="weekly">
+                <div class="weekly-text">
+                    <h3>Weekly Coaching</h3>
+                    <p>Ongoing one-on-one sessions without the full programme structure — for those who know what they need.</p>
+                </div>
+                <div class="weekly-price">€100 <span>/ week</span></div>
+            </div>
+        </div>
+
+        <div class="chapter-divider"><span>✦</span></div>
+
+        <div style="text-align:center;">
+            <p style="font-size:1.1rem; font-weight:300; color:var(--text-muted); font-style:italic; margin-bottom:2rem;">Not sure which path is right? Get in touch — that's what the first conversation is for.</p>
+            <a href="pricing.html" class="cta-btn" style="display:inline-block; width:auto;">Begin the Conversation</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
