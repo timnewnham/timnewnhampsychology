@@ -108,25 +108,17 @@
             width: 100%;
         }
 
-         .nav-burger {
+      .nav-burger {
             display: none;
-            flex-direction: column;
-            gap: 5px;
             background: none;
             border: none;
             cursor: pointer;
-            padding: 0.5rem;
+            font-size: 1.8rem;
+            color: #C9A84C;
+            padding: 0.2rem 0.5rem;
+            line-height: 1;
         }
-
-        .nav-burger span {
-            display: block;
-            width: 28px;
-            height: 3px;
-            background: #C9A84C;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
+        
         .nav-login {
             font-family: 'Cinzel', serif;
             font-size: 0.7rem;
@@ -475,7 +467,7 @@
             <li><a href="methods.html">Methods</a></li>
             <li><a href="pricing.html">Pricing</a></li>
         </ul>
-        <button class="nav-burger" id="navBurger" onclick="toggleMenu()">
+        <button class="nav-burger" id="navBurger" onclick="toggleMenu()">☰</button>
             <span></span>
             <span></span>
             <span></span>
