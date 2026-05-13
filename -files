@@ -1,0 +1,14 @@
+[33m4a22888[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m burger unicode icon
+[33m1ee058e[m fix burger spans
+[33m3079401[m fix burger spans
+[33ma697582[m fix burger display
+[33m829c15e[m test burger visible
+[33mf731f2e[m widen mobile breakpoint
+[33m7778fa7[m fix mobile menu
+[33m1ef240b[m fix mobile burger menu
+[33m6b25350[m fix image extension capitalisation
+[33mf5d816a[m fix images folder capitalisation
+[33m54e60e2[m move files to root
+[33m6a3c862[m add gitignore
+[33m2682788[m remove installer file
+[33m4cc9c81[m first commit
