@@ -290,6 +290,101 @@
             background: rgba(255,255,255,0.02);
         }
 
+/* ── PERSONAL STATEMENT ── */
+.statement {
+    margin-bottom: 6rem;
+}
+
+.statement-section {
+    margin-bottom: 2.5rem;
+}
+
+.statement-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 1.2rem;
+}
+
+.statement-section p,
+.statement-metaphor p {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    font-weight: 300;
+    line-height: 1.9;
+    color: #c8bfaa;
+    margin-bottom: 1.2rem;
+}
+
+.statement-metaphor {
+    border-left: 2px solid rgba(201,168,76,0.3);
+    padding: 1rem 1.5rem;
+    margin: 2.5rem 0;
+    font-style: italic;
+}
+
+.statement-boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+}
+
+.statement-box {
+    padding: 1.8rem;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(255,255,255,0.02);
+}
+
+.statement-box strong {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.statement-box p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #c8bfaa;
+}
+
+.statement-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 4rem 0 2rem;
+    opacity: 0.4;
+}
+
+.statement-divider::before,
+.statement-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gold);
+}
+
+.statement-divider span {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .statement-boxes {
+        grid-template-columns: 1fr;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -313,6 +408,49 @@
     </div>
 
     <div class="content">
+
+<div class="statement">
+
+    <div class="statement-section">
+        <span class="statement-label">A Word of Honesty</span>
+        <p>Covering this much ground in 14 weeks means the work doesn't end when the programme does. What I offer is not therapy — it's a toolbox you can carry for life.</p>
+        <p>Take Jung as an example. Jungian analysts do deep, intensive work with a person multiple times a week, often for years, sometimes for a lifetime. Not every man needs that. But every man can benefit from understanding archetypes, shadow, and what it means to integrate the parts of yourself you've kept hidden. I've drawn from Jung, Moore, and Johnson to distil what I believe are the most practical tools for the everyday man — offering you frameworks and language you can actually use, long after we finish.</p>
+        <p>Because ultimately, the only person who can change your life is you. I'm just here to show you the way.</p>
+    </div>
+
+    <div class="statement-section">
+        <p>I am not teaching you how to live like me. I am not perfect, and I have many faults. As much as I live as virtuously as I can and aim for balance, I am still a work in progress — just as we all are. I simply incorporate the frameworks developed by wiser men than me into my own daily life to keep myself on the right track. And it does work.</p>
+        <p>These theories do not lend themselves to a finished resting state of indefinite fulfilment. They are not applied once and then you are set for life. What I am teaching are frameworks that require daily application. They function as tools that, when used to keep us on the right path, mean that when we falter — and falter we will — we know how to get back up and keep going. We take the experience, learn from it, and grow.</p>
+        <p>Anyone who claims to have the one cure to the meaning problem is simply a snake oil salesman. And frankly, they miss the beauty and the possibility for growth found in sitting with the harder moments of life.</p>
+        <p>I will not stand here and claim to be holier than thou, or pretend I live some life of unbroken clarity. I am not the ideal man to strive towards — that would make me a myth. But I do aim to be an ideal guide: someone devoting his life to learning not only the best techniques, but how to present them, so I can walk the path alongside you and point the way forwards.</p>
+    </div>
+
+    <div class="statement-metaphor">
+        <p>Take the image on the home page as a metaphor. I am the guide in the middle, living between the storm and the clear sky — sometimes gravitating more towards the storm, sometimes more towards the sun. But I am pointing you towards the cairn. A stack of stones built over generations by philosophers and scientists who came before us, each one adding what they knew, so that those who follow might find their way across the same mountain pass, towards embracing the sun.</p>
+    </div>
+
+    <div class="statement-section">
+        <span class="statement-label">What to Expect</span>
+        <p>This is a semi-structured programme. There is a clear framework, but you are not passive within it. The choices you make and the work you put in shape how it unfolds for you.</p>
+        <p>It is a demanding programme. It will challenge you in ways you may not expect. That is not incidental — it is the point. For this process to work, it has to be. Nothing changes if nothing changes.</p>
+    </div>
+
+    <div class="statement-boxes">
+        <div class="statement-box">
+            <strong>The Guarantee</strong>
+            <p>I have enough confidence in this process to offer a full refund at the end of the course if you feel you gave it your all, and it hasn't changed you.</p>
+        </div>
+        <div class="statement-box">
+            <strong>The Research</strong>
+            <p>I am conducting ongoing research, collecting anonymous data before, during, and after the programme with your consent — with the goal of not only improving what I offer, but building a scientifically validated intervention that can one day be applied more broadly.</p>
+        </div>
+    </div>
+
+    <div class="statement-divider">
+        <span>The Stones</span>
+    </div>
+
+</div>   
 
         <div class="framework">
             <div class="framework-meta">
