@@ -147,14 +147,15 @@
         }
 
         .content {
-            max-width: 780px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 6rem 2rem 10rem;
         }
 
         /* Signs section */
         .signs {
-            margin-bottom: 6rem;
+            max-width: 780px;
+            margin: 0 auto 6rem;
         }
 
         .signs h2 {
@@ -181,9 +182,7 @@
             transition: border-color 0.3s ease;
         }
 
-        .sign-item:hover {
-            border-color: rgba(201,168,76,0.35);
-        }
+        .sign-item:hover { border-color: rgba(201,168,76,0.35); }
 
         .sign-icon {
             color: var(--gold);
@@ -222,12 +221,35 @@
             color: var(--gold);
         }
 
-        /* Programmes */
-        .programmes {
+        /* Pull quote */
+        .pull-quote {
+            max-width: 780px;
+            margin: 0 auto;
+            border-left: 2px solid var(--gold);
+            padding: 0.5rem 0 0.5rem 2rem;
+            margin-bottom: 0;
+        }
+
+        .pull-quote p {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            font-style: italic;
+            font-weight: 300;
+            color: var(--gold-light);
+            line-height: 1.7;
+        }
+
+        /* Paths section */
+        .paths {
             margin-bottom: 6rem;
         }
 
-        .programmes h2 {
+        .paths-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .paths-header h2 {
             font-family: 'Cinzel', serif;
             font-size: clamp(1.2rem, 2vw, 1.6rem);
             font-weight: 600;
@@ -235,37 +257,37 @@
             margin-bottom: 0.8rem;
         }
 
-        .programmes .intro-text {
+        .paths-header p {
             font-size: 1.05rem;
             font-weight: 300;
             color: var(--text-muted);
             font-style: italic;
-            margin-bottom: 3rem;
             line-height: 1.8;
         }
 
-        .programme-cards {
+        .paths-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        .programme-card {
-            padding: 2.5rem;
+        .path-card {
+            padding: 2.2rem;
             border: 1px solid rgba(201,168,76,0.15);
             position: relative;
+            display: flex;
+            flex-direction: column;
             transition: border-color 0.3s ease;
         }
 
-        .programme-card:hover {
+        .path-card:hover { border-color: rgba(201,168,76,0.35); }
+
+        .path-card.featured {
             border-color: rgba(201,168,76,0.4);
         }
 
-        .programme-card.featured {
-            border-color: rgba(201,168,76,0.35);
-        }
-
-        .programme-card.featured::before {
+        .path-card.featured::before {
             content: 'Most Chosen';
             position: absolute;
             top: -1px; right: 2rem;
@@ -285,15 +307,67 @@
             text-transform: uppercase;
             color: var(--gold);
             display: block;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
         }
 
         .card-name {
             font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
             color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Depth toggle */
+        .toggle-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
             margin-bottom: 1.2rem;
+        }
+
+        .toggle-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.2s ease;
+            user-select: none;
+        }
+
+        .toggle-label.active { color: var(--gold); }
+
+        .toggle-track {
+            width: 38px;
+            height: 20px;
+            border-radius: 10px;
+            background: rgba(201,168,76,0.12);
+            border: 1px solid rgba(201,168,76,0.25);
+            position: relative;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .toggle-track.on {
+            background: rgba(201,168,76,0.2);
+            border-color: rgba(201,168,76,0.5);
+        }
+
+        .toggle-thumb {
+            position: absolute;
+            top: 3px; left: 3px;
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .toggle-track.on .toggle-thumb {
+            transform: translateX(18px);
+            background: var(--gold);
         }
 
         .card-desc {
@@ -301,60 +375,66 @@
             font-weight: 300;
             line-height: 1.8;
             color: #c8bfaa;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .card-features {
+            list-style: none;
+            border-top: 1px solid rgba(201,168,76,0.1);
+            padding-top: 1.2rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .card-features li {
+            font-size: 0.92rem;
+            font-weight: 300;
+            color: #c8bfaa;
+            padding: 0.45rem 0;
+            border-bottom: 1px solid rgba(201,168,76,0.07);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+        }
+
+        .card-features li::before {
+            content: '—';
+            color: var(--gold);
+            opacity: 0.5;
+            flex-shrink: 0;
         }
 
         .card-price {
             font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: var(--gold-light);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
 
         .card-price-note {
             font-size: 0.85rem;
             color: var(--text-muted);
             font-style: italic;
-            margin-bottom: 2rem;
-        }
-
-        .card-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .card-features li {
-            font-size: 0.95rem;
-            font-weight: 300;
-            color: #c8bfaa;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(201,168,76,0.08);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .card-features li::before {
-            content: '—';
-            color: var(--gold);
-            opacity: 0.6;
-            flex-shrink: 0;
+            margin-bottom: 1.5rem;
         }
 
         .cta-btn {
-            display: inline-block;
+            display: block;
             font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--dark);
             background: var(--gold);
-            padding: 0.9rem 2rem;
+            padding: 0.85rem 2rem;
             text-decoration: none;
-            transition: background 0.3s ease, transform 0.2s ease;
-            width: 100%;
             text-align: center;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease, transform 0.2s ease;
+            margin-top: auto;
         }
 
         .cta-btn:hover {
@@ -368,27 +448,27 @@
             border: 1px solid rgba(201,168,76,0.4);
         }
 
-        .cta-btn.outline:hover {
-            background: rgba(201,168,76,0.08);
-        }
+        .cta-btn.outline:hover { background: rgba(201,168,76,0.08); }
 
-        /* Also weekly */
+        /* Weekly coaching bar */
         .weekly {
-            margin-top: 2rem;
-            padding: 2rem;
+            padding: 1.8rem 2rem;
             border: 1px solid rgba(201,168,76,0.12);
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 2rem;
+            transition: border-color 0.3s ease;
         }
+
+        .weekly:hover { border-color: rgba(201,168,76,0.3); }
 
         .weekly-text h3 {
             font-family: 'Cinzel', serif;
             font-size: 1rem;
             font-weight: 600;
             color: var(--text);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
         }
 
         .weekly-text p {
@@ -413,27 +493,20 @@
             font-weight: 300;
         }
 
-        /* Pull quote */
-        .pull-quote {
-            border-left: 2px solid var(--gold);
-            padding: 0.5rem 0 0.5rem 2rem;
-            margin: 3rem 0;
-        }
+        /* Toggle content visibility */
+        .deep-content { display: none; }
+        .deep-content.visible { display: block; }
+        .light-content { display: block; }
+        .light-content.hidden { display: none; }
 
-        .pull-quote p {
-            font-family: 'Crimson Pro', serif;
-            font-size: clamp(1.2rem, 2vw, 1.5rem);
-            font-style: italic;
-            font-weight: 300;
-            color: var(--gold-light);
-            line-height: 1.7;
+        @media (max-width: 900px) {
+            .paths-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
             nav { padding: 0 1.5rem; }
             .nav-links { display: none; }
             .sign-list { grid-template-columns: 1fr; }
-            .programme-cards { grid-template-columns: 1fr; }
             .weekly { flex-direction: column; align-items: flex-start; }
         }
     </style>
@@ -496,47 +569,92 @@
 
         <div class="chapter-divider"><span>✦</span></div>
 
-        <!-- Programmes -->
-        <div class="programmes">
-            <h2>Two paths. One direction.</h2>
-            <p class="intro-text">The programme is offered in two forms — not based on age, but on readiness and depth of commitment.</p>
+        <!-- Paths -->
+        <div class="paths">
+            <div class="paths-header">
+                <h2>Three paths. One direction.</h2>
+                <p>Each path addresses a different starting point. All of them lead to the same place.</p>
+            </div>
 
-            <div class="programme-cards">
+            <div class="paths-grid">
 
-                <div class="programme-card">
+                <!-- Path One: Meaning & Direction -->
+                <div class="path-card">
                     <span class="card-tier">Path One</span>
-                    <div class="card-name">The Light</div>
-                    <p class="card-desc">A structured introduction to the frameworks, habits, and psychological tools that form the foundation of the programme. Demanding, but accessible. Designed for those taking their first serious step.</p>
+                    <div class="card-name">Meaning &amp; Direction</div>
+                    <p class="card-desc">For those who feel unmoored — unclear on who they are, what they value, or where they're going. This path works with identity, purpose, and the psychological foundations of a deliberate life.</p>
+                    <ul class="card-features">
+                        <li>Values clarification work</li>
+                        <li>Identity and narrative framework</li>
+                        <li>Weekly one-on-one sessions</li>
+                        <li>Daily journal via app</li>
+                        <li>Existential &amp; Jungian tools</li>
+                    </ul>
                     <div class="card-price">€1,500</div>
                     <p class="card-price-note">Full 14-week programme</p>
-                    <ul class="card-features">
-                        <li>14 weeks of structured coaching</li>
-                        <li>Weekly one-on-one sessions</li>
-                        <li>Daily journal access via app</li>
-                        <li>Core framework education</li>
-                        <li>Physical challenge component</li>
-                    </ul>
                     <a href="pricing.html" class="cta-btn outline">Learn More</a>
                 </div>
 
-                <div class="programme-card featured">
+                <!-- Path Two: Initiation (featured) -->
+                <div class="path-card featured">
                     <span class="card-tier">Path Two</span>
-                    <div class="card-name">The Deep</div>
-                    <p class="card-desc">The full initiation. Psychologically demanding, physically rigorous, and culminating in the Crucible — a final experience that marks a real threshold crossed. For those who are ready to go all the way.</p>
+                    <div class="card-name">Initiation</div>
+
+                    <div class="toggle-wrap">
+                        <span class="toggle-label active" id="label-light">Light</span>
+                        <div class="toggle-track" id="depth-toggle" onclick="toggleDepth()" role="switch" aria-checked="false" tabindex="0">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                        <span class="toggle-label" id="label-deep">Deep</span>
+                    </div>
+
+                    <div class="light-content" id="light-content">
+                        <p class="card-desc">A structured introduction to the frameworks, habits, and psychological tools that form the foundation of the programme. Demanding, but accessible — designed for those taking their first serious step.</p>
+                        <ul class="card-features">
+                            <li>14 weeks of structured coaching</li>
+                            <li>Weekly one-on-one sessions</li>
+                            <li>Daily journal via app</li>
+                            <li>Core framework education</li>
+                            <li>Physical challenge component</li>
+                        </ul>
+                    </div>
+
+                    <div class="deep-content" id="deep-content">
+                        <p class="card-desc">The full initiation. Psychologically demanding, physically rigorous, culminating in the Crucible — a final experience that marks a real threshold crossed. For those ready to go all the way.</p>
+                        <ul class="card-features">
+                            <li>Everything in the Light path</li>
+                            <li>Deeper Jungian shadow work</li>
+                            <li>Full Crucible experience</li>
+                            <li>Extended reflection framework</li>
+                            <li>Post-programme integration support</li>
+                        </ul>
+                    </div>
+
                     <div class="card-price">€1,500</div>
                     <p class="card-price-note">Full 14-week programme</p>
-                    <ul class="card-features">
-                        <li>Everything in The Light</li>
-                        <li>Deeper Jungian shadow work</li>
-                        <li>Full Crucible experience</li>
-                        <li>Extended reflection framework</li>
-                        <li>Post-programme integration support</li>
-                    </ul>
                     <a href="pricing.html" class="cta-btn">Learn More</a>
+                </div>
+
+                <!-- Path Three: Performance & Fitness -->
+                <div class="path-card">
+                    <span class="card-tier">Path Three</span>
+                    <div class="card-name">Performance &amp; Fitness</div>
+                    <p class="card-desc">For those who want to build discipline, physical capacity, and a structured relationship with their body. Grounded in psychology — not just training — this path treats physical rigour as a vehicle for character.</p>
+                    <ul class="card-features">
+                        <li>Structured physical programme</li>
+                        <li>Discipline and habit architecture</li>
+                        <li>Weekly one-on-one sessions</li>
+                        <li>Daily journal via app</li>
+                        <li>Mind-body integration work</li>
+                    </ul>
+                    <div class="card-price">€1,500</div>
+                    <p class="card-price-note">Full 14-week programme</p>
+                    <a href="pricing.html" class="cta-btn outline">Learn More</a>
                 </div>
 
             </div>
 
+            <!-- Weekly coaching -->
             <div class="weekly">
                 <div class="weekly-text">
                     <h3>Weekly Coaching</h3>
@@ -554,6 +672,36 @@
         </div>
 
     </div>
+
+    <script>
+        function toggleDepth() {
+            const track = document.getElementById('depth-toggle');
+            const labelLight = document.getElementById('label-light');
+            const labelDeep = document.getElementById('label-deep');
+            const lightContent = document.getElementById('light-content');
+            const deepContent = document.getElementById('deep-content');
+            const isOn = track.classList.toggle('on');
+            track.setAttribute('aria-checked', isOn);
+            if (isOn) {
+                labelLight.classList.remove('active');
+                labelDeep.classList.add('active');
+                lightContent.classList.add('hidden');
+                deepContent.classList.add('visible');
+            } else {
+                labelDeep.classList.remove('active');
+                labelLight.classList.add('active');
+                lightContent.classList.remove('hidden');
+                deepContent.classList.remove('visible');
+            }
+        }
+
+        document.getElementById('depth-toggle').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleDepth();
+            }
+        });
+    </script>
 
 </body>
 </html>
