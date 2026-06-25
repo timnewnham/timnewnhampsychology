@@ -507,8 +507,8 @@
         .deep-content.visible { display: block; }
         .light-content { display: block; }
         .light-content.hidden { display: none; }
-        .athlete-content { display: none; }
-        .general-content { display: block; }
+        .athlete-content { display: block; }
+        .general-content { display: none; }
 
         /* Contact form */
         .contact-section h2 {
@@ -827,40 +827,40 @@
                     <div class="card-name">Performance &amp; Fitness</div>
 
                     <div class="toggle-wrap">
-                        <span class="toggle-label active" id="label-general">General</span>
-                        <div class="toggle-track" id="fitness-toggle" onclick="toggleFitness()" role="switch" aria-checked="false" tabindex="0">
-                            <div class="toggle-thumb"></div>
-                        </div>
-                        <span class="toggle-label" id="label-athlete">Athlete</span>
-                    </div>
+    <span class="toggle-label active" id="label-athlete">Athlete</span>
+    <div class="toggle-track" id="fitness-toggle" onclick="toggleFitness()" role="switch" aria-checked="false" tabindex="0">
+        <div class="toggle-thumb"></div>
+    </div>
+    <span class="toggle-label" id="label-general">General</span>
+</div>
 
-                    <div class="general-content" id="general-content">
-                        <p class="card-desc">For those who want to change their habits and build discipline around exercise and nutrition. This is not just a gym programme. This path dives deeper to the heart of the issue, resulting in lifelong changes.</p>
-                        <ul class="card-features">
-                            <li>Structured physical programme</li>
-                            <li>Discipline and habit architecture</li>
-                            <li>Deeper exploration for the root cause</li>
-                            <li>Weekly one-on-one sessions</li>
-                            <li>Active communication throughout the week</li>
-                        </ul>
-                        <div class="card-price">€100</div>
-                        <p class="card-price-note">Weekly tailored coaching</p>
-                        <a href="#contactForm" class="cta-btn outline">Enquire Now</a>
-                    </div>
+<div class="athlete-content" id="athlete-content">
+    <p class="card-desc">For aspiring and already competing athletes who want to develop not just their bodies, but their minds. This path combines sport psychology, performance coaching, and structured training to break through plateaus and develop the mental and physical edge that separates good from great.</p>
+    <ul class="card-features">
+        <li>Mental skills development</li>
+        <li>Mind and body relationship work</li>
+        <li>Resilience and grit</li>
+        <li>Weekly one-on-one sessions</li>
+        <li>Active communication throughout the week</li>
+    </ul>
+    <div class="card-price">€100</div>
+    <p class="card-price-note">Weekly tailored coaching</p>
+    <a href="#contactForm" class="cta-btn outline">Enquire Now</a>
+</div>
 
-                    <div class="athlete-content" id="athlete-content">
-                        <p class="card-desc">For aspiring and already competing athletes who want to develop not just their bodies, but their minds. This path combines sport psychology, performance coaching, and structured training to break through plateaus and develop the mental edge that separates good from great.</p>
-                        <ul class="card-features">
-                            <li>Sport psychology framework</li>
-                            <li>Mind and body relationship work</li>
-                            <li>Mental performance tools</li>
-                            <li>Weekly one-on-one sessions</li>
-                            <li>Active communication throughout the week</li>
-                        </ul>
-                        <div class="card-price">€100</div>
-                        <p class="card-price-note">Weekly tailored coaching</p>
-                        <a href="#contactForm" class="cta-btn outline">Enquire Now</a>
-                    </div>
+<div class="general-content" id="general-content">
+    <p class="card-desc">For those who want to change their habits and build discipline around exercise and nutrition. This is not just a gym programme. This path dives deeper to the heart of the issue, resulting in lifelong changes.</p>
+    <ul class="card-features">
+        <li>Structured physical programme</li>
+        <li>Discipline and habit development</li>
+        <li>Deeper beliefs exploration</li>
+        <li>Weekly one-on-one sessions</li>
+        <li>Active communication throughout the week</li>
+    </ul>
+    <div class="card-price">€100</div>
+    <p class="card-price-note">Weekly tailored coaching</p>
+    <a href="#contactForm" class="cta-btn outline">Enquire Now</a>
+</div>
                 </div>
 
             </div>
@@ -869,7 +869,7 @@
             <div class="weekly">
                 <div class="weekly-text">
                     <h3>Weekly Coaching</h3>
-                    <p>Ongoing one-on-one sessions without full programme structure, for those who want support and guidance</p>
+                    <p>Ongoing one-on-one sessions without full programme structure, for those who want support and guidance in living healthier lifestyles</p>
                 </div>
                 <div class="weekly-price">€100 <span>/ week</span></div>
             </div>
@@ -965,25 +965,25 @@
         });
 
         function toggleFitness() {
-            const track = document.getElementById('fitness-toggle');
-            const labelGeneral = document.getElementById('label-general');
-            const labelAthlete = document.getElementById('label-athlete');
-            const generalContent = document.getElementById('general-content');
-            const athleteContent = document.getElementById('athlete-content');
-            const isOn = track.classList.toggle('on');
-            track.setAttribute('aria-checked', isOn);
-            if (isOn) {
-                labelGeneral.classList.remove('active');
-                labelAthlete.classList.add('active');
-                generalContent.style.display = 'none';
-                athleteContent.style.display = 'block';
-            } else {
-                labelAthlete.classList.remove('active');
-                labelGeneral.classList.add('active');
-                generalContent.style.display = 'block';
-                athleteContent.style.display = 'none';
-            }
-        }
+    const track = document.getElementById('fitness-toggle');
+    const labelGeneral = document.getElementById('label-general');
+    const labelAthlete = document.getElementById('label-athlete');
+    const generalContent = document.getElementById('general-content');
+    const athleteContent = document.getElementById('athlete-content');
+    const isOn = track.classList.toggle('on');
+    track.setAttribute('aria-checked', isOn);
+    if (isOn) {
+        labelAthlete.classList.remove('active');
+        labelGeneral.classList.add('active');
+        athleteContent.style.display = 'none';
+        generalContent.style.display = 'block';
+    } else {
+        labelGeneral.classList.remove('active');
+        labelAthlete.classList.add('active');
+        athleteContent.style.display = 'block';
+        generalContent.style.display = 'none';
+    }
+}
 
         document.getElementById('fitness-toggle').addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
