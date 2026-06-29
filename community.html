@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Who This Is For — Tim Newnham Psychology</title>
+    <title>The Fellowship — Tim Newnham Psychology</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
@@ -141,62 +141,88 @@
             font-weight: 300;
             font-style: italic;
             color: var(--text-muted);
-            max-width: 580px;
+            max-width: 600px;
             margin: 0 auto;
             line-height: 1.8;
         }
 
         .content {
-            max-width: 1100px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 6rem 2rem 10rem;
         }
 
-        .archetypes-header {
+        .community-intro {
             text-align: center;
-            margin-bottom: 3.5rem;
+            max-width: 680px;
+            margin: 0 auto 5rem;
         }
 
-        .archetypes-header h2 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(1.2rem, 2vw, 1.6rem);
-            font-weight: 600;
-            color: var(--text);
+        .community-intro p {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            font-weight: 300;
+            line-height: 1.9;
+            color: #c8bfaa;
         }
 
-        .archetypes-list {
-            display: flex;
-            flex-direction: column;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .archetype-row {
+        .community-grid {
             display: grid;
-            grid-template-columns: 230px 1fr;
-            gap: 2.5rem;
-            padding: 2rem 0;
-            border-bottom: 1px solid rgba(201,168,76,0.1);
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
 
-        .archetype-row:last-child {
-            border-bottom: none;
+        .community-card {
+            padding: 2.5rem;
+            border: 1px solid rgba(201,168,76,0.15);
+            transition: border-color 0.3s ease;
         }
 
-        .archetype-title {
+        .community-card:hover {
+            border-color: rgba(201,168,76,0.35);
+        }
+
+        .community-card .tag {
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
+            font-size: 0.6rem;
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--gold);
-            line-height: 1.4;
+            display: block;
+            margin-bottom: 1rem;
         }
 
-        .archetype-desc {
+        .community-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1.2rem;
+        }
+
+        .community-card p {
             font-size: 1rem;
             font-weight: 300;
             line-height: 1.8;
             color: #c8bfaa;
+        }
+
+        .launch-note {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 5rem;
+            border-left: 2px solid var(--gold);
+            padding: 0.5rem 0 0.5rem 2rem;
+            text-align: left;
+        }
+
+        .launch-note p {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.05rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--gold-light);
+            line-height: 1.8;
         }
 
         .chapter-divider {
@@ -241,10 +267,7 @@
         }
 
         @media (max-width: 700px) {
-            .archetype-row {
-                grid-template-columns: 1fr;
-                gap: 0.8rem;
-            }
+            .community-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -262,62 +285,49 @@
             <li><a href="about.html">He who guides thee</a></li>
             <li><a href="methods.html">The stones</a></li>
             <li><a href="community.html">The Fellowship</a></li>
+            <li><a href="community.html">The Fellowship</a></li>
             <li><a href="pricing.html">The fare</a></li>
         </ul>
         <a href="login.html" class="nav-login">Portal</a>
     </nav>
 
     <div class="page-hero">
-        <span class="page-label">Who is this program for?</span>
-        <h1>For those yet to face the dragon, or have faced it and lost</h1>
-        <p class="intro">"In myths the hero is the one who conquers the dragon, not the one who is devoured by it. And yet both have to deal with the same dragon. Also, he is no hero who never met the dragon, or who, if he once saw it, declared afterwards that he saw nothing. Equally, only one who has risked the fight with the dragon and is not overcome by it wins the hoard, the 'treasure hard to attain.' He alone has a genuine claim to self-confidence, for he has faced the dark ground of his self and thereby has gained himself." — C.G. Jung</p>
+        <span class="page-label">The Fellowship</span>
+        <h1>Belonging, earned.</h1>
+        <p class="intro">No man completes the journey alone, and no man should arrive at its end alone either.</p>
     </div>
 
     <div class="content">
 
-        <div class="archetypes-header">
-            <h2>Do you see yourself here?</h2>
+        <div class="community-intro">
+            <p>Completing the programme is not the end of the path, it's the threshold into something ongoing. Those who finish gain entry into a standing community, built for men walking the same road, at different points along it.</p>
         </div>
 
-        <div class="archetypes-list">
+        <div class="community-grid">
 
-            <div class="archetype-row">
-                <div class="archetype-title">The Brawler</div>
-                <p class="archetype-desc">Angry at the world, and quick to let it show. Anger has become the only feeling he still has full access to.</p>
+            <div class="community-card">
+                <span class="tag">Online</span>
+                <h3>The Standing Circle</h3>
+                <p>A private space for past and current participants to stay connected, share what they're working through, and keep one foot in the conversation long after the formal programme ends. A place to be witnessed, not just to vent.</p>
             </div>
 
-            <div class="archetype-row">
-                <div class="archetype-title">The Wanderer</div>
-                <p class="archetype-desc">Lost, restless, allergic to commitment. He moves from one thing to the next, never quite landing.</p>
+            <div class="community-card">
+                <span class="tag">In Person</span>
+                <h3>The Monthly Gathering</h3>
+                <p>For those local to the area, a recurring in-person meetup. Open conversation, shared presence, and the kind of grounded connection that a screen can't replicate. Details on time and place shared with participants directly.</p>
             </div>
 
-            <div class="archetype-row">
-                <div class="archetype-title">The Ghost</div>
-                <p class="archetype-desc">Numb, withdrawn, going through the motions of a life he's stopped fully showing up for.</p>
-            </div>
+        </div>
 
-            <div class="archetype-row">
-                <div class="archetype-title">The Stone Wall</div>
-                <p class="archetype-desc">All toughness on the surface, with no access to what lies beneath it.</p>
-            </div>
-
-            <div class="archetype-row">
-                <div class="archetype-title">The Clinging Warrior</div>
-                <p class="archetype-desc">Once knew exactly who he was. The role that gave him his identity is gone, and he hasn't found what replaces it.</p>
-            </div>
-
-            <div class="archetype-row">
-                <div class="archetype-title">The Eternal Boy</div>
-                <p class="archetype-desc">Never truly initiated. Still operating from a child's ego, regardless of how old he's grown.</p>
-            </div>
-
+        <div class="launch-note">
+            <p>Both are currently being built alongside the first cohorts of the programme itself. Early participants won't just be joining The Fellowship, they'll be helping shape what it becomes.</p>
         </div>
 
         <div class="chapter-divider"><span>✦</span></div>
 
         <div style="text-align:center;">
-            <p style="font-size:1.1rem; font-weight:300; color:var(--text-muted); font-style:italic; margin-bottom:2rem;">See yourself in one of these? Let's talk.</p>
-            <a href="pricing.html#contactForm" class="cta-btn">Begin the Conversation</a>
+            <p style="font-size:1.1rem; font-weight:300; color:var(--text-muted); font-style:italic; margin-bottom:2rem;">Access is earned through the programme. Begin the journey first.</p>
+            <a href="pricing.html" class="cta-btn">Explore the Paths</a>
         </div>
 
     </div>
