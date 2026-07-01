@@ -117,7 +117,7 @@
 
         .page-label {
             font-family: 'Cinzel', serif;
-            font-size: 0.65rem;
+            font-size: 1.1rem;
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--gold);
@@ -154,7 +154,7 @@
 
         .framework {
             display: grid;
-            grid-template-columns: 180px 1fr;
+            grid-template-columns: 200px 1fr;
             gap: 3rem;
             margin-bottom: 5rem;
             padding-bottom: 5rem;
@@ -171,30 +171,31 @@
 
         .framework-number {
             font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            color: rgba(201,168,76,0.12);
+            color: rgba(201,168,76,0.15);
             line-height: 1;
             margin-bottom: 0.8rem;
         }
 
         .framework-origin {
             font-family: 'Cinzel', serif;
-            font-size: 0.55rem;
-            letter-spacing: 0.25em;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--gold);
-            opacity: 0.7;
+            opacity: 0.9;
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .framework-author {
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-weight: 300;
             font-style: italic;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.7;
+            margin-bottom: 0.3rem;
         }
 
         .framework-body h2 {
@@ -218,7 +219,7 @@
             margin-top: 1.5rem;
             padding: 1.2rem 1.5rem;
             border-left: 2px solid rgba(201,168,76,0.3);
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             font-style: italic;
             color: var(--text-muted);
             line-height: 1.8;
@@ -226,7 +227,7 @@
 
         .framework-body .application strong {
             font-family: 'Cinzel', serif;
-            font-size: 0.6rem;
+            font-size: 0.75rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--gold);
@@ -278,10 +279,20 @@
             background: rgba(255,255,255,0.02);
         }
 
-        /* PERSONAL STATEMENT */
-        .statement { margin-bottom: 6rem; }
+        /* ── COLLAPSIBLE STATEMENT ── */
+        .statement {
+            margin-bottom: 6rem;
+        }
 
-        .statement-section { margin-bottom: 2.5rem; }
+        .statement-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(201,168,76,0.15);
+            user-select: none;
+        }
 
         .statement-label {
             font-family: 'Cinzel', serif;
@@ -289,8 +300,41 @@
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--gold);
-            display: block;
-            margin-bottom: 1.2rem;
+        }
+
+        .statement-toggle {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            background: none;
+            border: 1px solid rgba(201,168,76,0.2);
+            padding: 0.4rem 1rem;
+            cursor: pointer;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .statement-toggle:hover {
+            color: var(--gold);
+            border-color: rgba(201,168,76,0.5);
+        }
+
+        .statement-body {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .statement-body.open {
+            max-height: 5000px;
+            opacity: 1;
+        }
+
+        .statement-section {
+            margin-bottom: 2.5rem;
+            padding-top: 2rem;
         }
 
         .statement-section p,
@@ -307,36 +351,6 @@
             padding: 1rem 1.5rem;
             margin: 2.5rem 0;
             font-style: italic;
-        }
-
-        .statement-boxes {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin: 2.5rem 0;
-        }
-
-        .statement-box {
-            padding: 1.8rem;
-            border: 1px solid rgba(201,168,76,0.2);
-            background: rgba(255,255,255,0.02);
-        }
-
-        .statement-box strong {
-            font-family: 'Cinzel', serif;
-            font-size: 0.6rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--gold);
-            display: block;
-            margin-bottom: 0.8rem;
-        }
-
-        .statement-box p {
-            font-size: 0.95rem;
-            font-weight: 300;
-            line-height: 1.8;
-            color: #c8bfaa;
         }
 
         .statement-divider {
@@ -363,14 +377,22 @@
             white-space: nowrap;
         }
 
+        .statement-section-label {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 1.2rem;
+        }
+
         @media (max-width: 768px) {
             nav { padding: 0 1.5rem; }
             .nav-links { display: none; }
             .framework { grid-template-columns: 1fr; gap: 1.5rem; }
-            .framework-number { font-size: 1.8rem; }
-            .statement-boxes { grid-template-columns: 1fr; }
+            .framework-number { font-size: 2rem; }
         }
-
     </style>
 </head>
 <body>
@@ -378,11 +400,11 @@
     <nav>
         <a href="index.html" class="nav-logo">Tim Newnham Psychology</a>
         <ul class="nav-links">
-    <li><a href="for-you.html">For whom?</a></li>
-    <li><a href="about.html">He who guides thee</a></li>
-    <li><a href="methods.html">The stones</a></li>
+            <li><a href="for-you.html">For whom?</a></li>
+            <li><a href="about.html">He who guides thee</a></li>
+            <li><a href="methods.html">The stones</a></li>
             <li><a href="community.html">The Fellowship</a></li>
-    <li><a href="pricing.html">The fare</a></li>
+            <li><a href="pricing.html">The fare</a></li>
         </ul>
         <a href="login.html" class="nav-login">Portal</a>
     </nav>
@@ -396,32 +418,40 @@
 
     <div class="content">
 
+        <!-- COLLAPSIBLE STATEMENT -->
         <div class="statement">
 
-            <div class="statement-section">
+            <div class="statement-header" onclick="toggleStatement()">
                 <span class="statement-label">A Word of Honesty</span>
-                <p>What I offer is not therapy, it's a toolbox you can carry for life. Covering this much ground in only 14 weeks means the work doesn't end when the programme does. It requires constant application and maintenance.</p>
-                <p>This also the means the theories I lean on are not to the same depth as if you were to go to a specialist. Take my application of Jungian theory as an example. Jungian analysts do deep, intensive work with a person multiple times a week, often for years, sometimes even for a lifetime. Not every man needs that. But every man can benefit from understanding archetypes, shadows, and what it means to integrate the parts of yourself you've kept hidden or weren't aware of. I've drawn from Jung, Moore, and Johnson to distil what I believe are the most practical tools for the everyday man, offering you frameworks and language you can actually use, long after we finish.</p>
-                <p>However, ultimately, the only person who can change your life is you. I'm just here to show you the way and support you through it.</p>
+                <button class="statement-toggle" id="statementToggle">Expand</button>
             </div>
 
-            <div class="statement-section">
-                <p>Additionally, I am not teaching you how to live like me. I am not perfect, and I have many faults. As much as I live as virtuously as I can and aim for balance, I am still and always will be a work in progress, just as we all are, and that is precisely the point. I simply incorporate the frameworks developed by wiser men than me into my own daily life to keep myself on the right track. And it does work.</p>
-                <p>These theories do not lend themselves to a finished resting state of perfect and indefinite fulfilment. They are not applied once and then you are set for life. What I am teaching are frameworks that require daily application. They function as tools that, when used to keep us on the right path, mean that when we falter, and falter we will, we know how to get back up and keep going. We take the experience, learn from it, and grow.</p>
-                <p>Anyone who claims to have a once applied cure to the meaning problem is simply a snake oil salesman. And frankly, they miss the beauty and the possibility for growth found in sitting with the harder and imperfect parts of life.</p>
-                <p>So, I will not stand here and claim to be holier than thou, or pretend I live some life of unbroken clarity. I am not the ideal man to strive towards, that would make me a myth. But I do aim to be an ideal guide: someone devoting his life to learning not only the best techniques, but how to present them, so I can walk the path alongside you and point the way forwards as best I possibly can.</p>
-            </div>
+            <div class="statement-body" id="statementBody">
 
-            <div class="statement-metaphor">
-                <p>Take the image on the home page as a metaphor. I am the guide in the middle, living between the storm and the clear sky, sometimes gravitating more towards the dark storm, sometimes more towards the light of the sun. Forever walking towards the sun, but accepting that life works in dichotomies. I stand there, pointing you towards the same cairn I walk towards. A stack of stones built over generations by the world's greatest known philosophers and scientists who came before us, each one adding their stone to the pile, so that those who follow after might find their way across the mountain pass, towards embracing that same light of the sun.</p>
-            </div>
+                <div class="statement-section">
+                    <p>What I offer is not therapy, it's a toolbox you can carry for life. Covering this much ground in only 14 weeks means the work doesn't end when the programme does. It requires constant application and maintenance.</p>
+                    <p>This also means the theories I lean on are not to the same depth as if you were to go to a specialist. Take my application of Jungian theory as an example. Jungian analysts do deep, intensive work with a person multiple times a week, often for years, sometimes even for a lifetime. Not every man needs that. But every man can benefit from understanding archetypes, shadows, and what it means to integrate the parts of yourself you've kept hidden or weren't aware of. I've drawn from Jung, Moore, and Johnson to distil what I believe are the most practical tools for the everyday man, offering you frameworks and language you can actually use, long after we finish.</p>
+                    <p>However, ultimately, the only person who can change your life is you. I'm just here to show you the way and support you through it.</p>
+                </div>
 
-            <div class="statement-section">
-                <span class="statement-label">What to Expect</span>
-                <p>This is a semi-structured programme. This means that there is a clear framework, but you are not passive within it. The choices you make and the work you put in shape how it unfolds for you.</p>
-                <p>It is a demanding programme. It will challenge you in ways you may not expect. That is not incidental, it is the very point. For this process to work, it has to be this way. Nothing changes if nothing changes. We embrace discomfort, as a necessary stage of growth.</p>
-            </div>
+                <div class="statement-section">
+                    <p>Additionally, I am not teaching you how to live like me. I am not perfect, and I have many faults. As much as I live as virtuously as I can and aim for balance, I am still and always will be a work in progress, just as we all are, and that is precisely the point. I simply incorporate the frameworks developed by wiser men than me into my own daily life to keep myself on the right track. And it does work.</p>
+                    <p>These theories do not lend themselves to a finished resting state of perfect and indefinite fulfilment. They are not applied once and then you are set for life. What I am teaching are frameworks that require daily application. They function as tools that, when used to keep us on the right path, mean that when we falter, and falter we will, we know how to get back up and keep going. We take the experience, learn from it, and grow.</p>
+                    <p>Anyone who claims to have a once applied cure to the meaning problem is simply a snake oil salesman. And frankly, they miss the beauty and the possibility for growth found in sitting with the harder and imperfect parts of life.</p>
+                    <p>So, I will not stand here and claim to be holier than thou, or pretend I live some life of unbroken clarity. I am not the ideal man to strive towards, that would make me a myth. But I do aim to be an ideal guide: someone devoting his life to learning not only the best techniques, but how to present them, so I can walk the path alongside you and point the way forwards as best I possibly can.</p>
+                </div>
 
+                <div class="statement-metaphor">
+                    <p>Take the image on the home page as a metaphor. I am the guide in the middle, living between the storm and the clear sky, sometimes gravitating more towards the dark storm, sometimes more towards the light of the sun. Forever walking towards the sun, but accepting that life works in dichotomies. I stand there, pointing you towards the same cairn I walk towards. A stack of stones built over generations by the world's greatest known philosophers and scientists who came before us, each one adding their stone to the pile, so that those who follow after might find their way across the mountain pass, towards embracing that same light of the sun.</p>
+                </div>
+
+                <div class="statement-section">
+                    <span class="statement-section-label">What to Expect</span>
+                    <p>This is a semi-structured programme. This means that there is a clear framework, but you are not passive within it. The choices you make and the work you put in shape how it unfolds for you.</p>
+                    <p>It is a demanding programme. It will challenge you in ways you may not expect. That is not incidental, it is the very point. For this process to work, it has to be this way. Nothing changes if nothing changes. We embrace discomfort, as a necessary stage of growth.</p>
+                </div>
+
+            </div>
 
             <div class="statement-divider">
                 <span>The Stones</span>
@@ -512,9 +542,9 @@
             </div>
             <div class="framework-body">
                 <h2>Rites of Passage</h2>
-<p>Van Gennep identified the universal three-stage structure of initiation across human cultures: separation from the old identity, a liminal threshold state, and incorporation into a new one. Every traditional society understood that boys do not become men automatically, they require a structured passage, witnessed by the community, that marks the transition as real.</p>
-<p>Victor Turner deepened this, showing that the liminal phase, the threshold between identities, is where genuine transformation occurs, and that it is most powerful when undergone in community with others. Mircea Eliade showed that across virtually every human culture, this passage takes the form of a symbolic death and rebirth, the old self must die before the new one can emerge.</p>
-<p>Modern Western culture has largely abandoned this structure, leaving young men with no clear threshold to cross, no witness to their becoming, and no community or guide to receive them on the other side. Leaving them needing to prove each day to their society that they are men, through superficial behaviours that are more often than not harmful and maladaptive. Initiation breaks this cycle.</p>
+                <p>Van Gennep identified the universal three-stage structure of initiation across human cultures: separation from the old identity, a liminal threshold state, and incorporation into a new one. Every traditional society understood that boys do not become men automatically, they require a structured passage, witnessed by the community, that marks the transition as real.</p>
+                <p>Victor Turner deepened this, showing that the liminal phase, the threshold between identities, is where genuine transformation occurs, and that it is most powerful when undergone in community with others. Mircea Eliade showed that across virtually every human culture, this passage takes the form of a symbolic death and rebirth, the old self must die before the new one can emerge.</p>
+                <p>Modern Western culture has largely abandoned this structure, leaving young men with no clear threshold to cross, no witness to their becoming, and no community or guide to receive them on the other side. Leaving them needing to prove each day to their society that they are men, through superficial behaviours that are more often than not harmful and maladaptive. Initiation breaks this cycle.</p>
                 <div class="application">
                     <strong>In the programme</strong>
                     The entire 14-week structure is designed as a rite of passage in Van Gennep's tradition. The Crucible serves as the liminal threshold, the symbolic death and rebirth that Eliade identified as the universal core of initiation across every human culture.
@@ -522,41 +552,43 @@
             </div>
         </div>
 
-        <div class="framework">
+       <div class="framework">
             <div class="framework-meta">
                 <div class="framework-number">06</div>
-                <span class="framework-origin">Developmental Psychology</span>
-                <p class="framework-author">Erik Erikson<br>1902–1994</p>
+                <span class="framework-origin">Developmental Psychology & Dynamic Systems Theory</span>
+                <p class="framework-author">Erik Erikson (1902–1994)<br>Saskia Kunnen & Paul van Geert (2012–present)</p>
             </div>
             <div class="framework-body">
-                <h2>Erikson's Developmental Stages</h2>
-                <p>Erikson mapped the human lifespan into eight stages, each presenting a core psychological challenge that must be navigated to move forward with a stable sense of identity. For young men aged 15 to 30, this typically spans the stages of Identity vs Role Confusion and Intimacy vs Isolation, two of the most formative and turbulent passages a person can face.</p>
-                <p>Understanding where you are in this map, and what your stage is asking of you, transforms confusion into context. What feels like failure or stagnation often turns out to be the friction of a stage not yet completed.</p>
+                <h2>Developmental Stages & Dynamic Systems</h2>
+                <p>Erikson mapped the human lifespan into eight stages, each presenting a core psychological challenge that must be navigated to move forward with a stable sense of identity. For young men aged 15 to 30, this typically spans Identity vs Role Confusion and Intimacy vs Isolation, two of the most formative and turbulent passages a person can face.</p>
+                <p>Where Erikson describes the stages themselves, dynamic systems theory explains how a person actually moves between them. Kunnen and van Geert, working specifically on identity development, showed that identity does not progress smoothly from one stage to the next. It behaves like a dynamic system: holding a stable pattern for a period, becoming increasingly variable and emotionally turbulent as that pattern is challenged, then reorganising into a new, more complex configuration once a threshold is crossed.</p>
+                <p>Together, they offer two layers of the same map. Erikson tells you where you are and what the stage is asking of you. Dynamic systems theory tells you why the ground feels unstable right now, and that the instability itself is usually a sign of reorganisation underway, not evidence that something has gone wrong.</p>
+                <p class="reference">Erikson, E. H. (1968). Identity: Youth and crisis. W. W. Norton & Company.<br>Kunnen, E. S., & van Geert, P. (2012). General characteristics of a dynamic systems approach. In E. S. Kunnen (Ed.), A dynamic systems approach to adolescent development (pp. 15-34). Psychology Press.</p>
                 <div class="application">
                     <strong>In the programme</strong>
-                    Each participant is located within Erikson's framework at the outset. The programme is then shaped around the specific developmental challenges he is facing, so that the work is not generic but targeted to where he actually is.
+                    Each participant is located within Erikson's framework at the outset, and the destabilisation that shows up along the way is treated as a signal, not a setback. The work is to recognise where you sit in the current stage, understand the turbulence as the sign of a genuine reorganisation underway, and deliberately shape the conditions so it settles into something stronger than where you started.
                 </div>
             </div>
         </div>
 
-       <div class="framework">
-    <div class="framework-meta">
-        <div class="framework-number">07</div>
-        <span class="framework-origin">Meaning & Motivation</span>
-        <p class="framework-author">Jacob B. Hirsh<br>2010</p>
-    </div>
-    <div class="framework-body">
-        <h2>Value-based Goal Setting</h2>
-        <p>Hirsh argues that meaning is not found, it is constructed around the goals we adopt. The more central a goal is to our identity, the more weight it carries, neurologically and experientially. Moments that touch our deepest values produce genuine neurochemical responses, stronger attention, stronger memory formation, stronger influence on who we become. Moments that do not touch our goals pass through us and leave little trace.</p>
-        <p>For young men without clear values or identity goals, life loses gravitational pull. Not because nothing is happening, but because nothing feels like it matters. Hirsh gives us the neuropsychological explanation for what that emptiness actually is, and more importantly, what resolves it.</p>
-        <div class="application">
-            <strong>In the programme</strong>
-            A central task of the work is helping each participant identify his highest-level goals, not task-level targets, but the values and identity commitments around which a meaningful life can be organised. When a man knows what he stands for, the weight returns. And with it, direction.
+        <div class="framework">
+            <div class="framework-meta">
+                <div class="framework-number">07</div>
+                <span class="framework-origin">Meaning & Motivation</span>
+                <p class="framework-author">Jacob B. Hirsh<br>2010</p>
+            </div>
+            <div class="framework-body">
+                <h2>Value-based Goal Setting</h2>
+                <p>Hirsh argues that meaning is not found, it is constructed around the goals we adopt. The more central a goal is to our core values and identity, the more weight it carries. Working towards these goals each day, without such a focus on the outcome, offers us consistent neurochemical rewards without the risk of failure to attain an outcome.</p>
+                <p>For young men without clear values or identity goals, life loses gravitational pull. Not because nothing is happening, but because nothing feels like it matters.</p>
+                <div class="application">
+                    <strong>In the programme</strong>
+                    A central task of the work is helping each participant identify his highest-level goals, not task-level targets, but the values and identity commitments around which a meaningful life can be organised. When a man knows what he stands for, the weight returns. And with it, direction.
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-       <div class="framework">
+        <div class="framework">
             <div class="framework-meta">
                 <div class="framework-number">08</div>
                 <span class="framework-origin">Contextual Behavioural Science</span>
@@ -564,12 +596,12 @@
             </div>
             <div class="framework-body">
                 <h2>Acceptance and Commitment Therapy</h2>
-                <p>ACT is built on a deceptively simple premise: the problem is not difficult thoughts and feelings, it is the struggle against them. ACT teaches psychological flexibility, the ability to hold difficult inner experiences without being controlled by them, while moving towards what genuinely matters to you.</p>
-                <p>Its core processes, values clarification, committed action, defusion from unhelpful thoughts, and acceptance of what cannot be changed, sit naturally alongside Stoic philosophy. Both traditions arrive at similar truths from very different directions: ancient wisdom and modern clinical science converging on the same ground.</p>
+                <p>ACT is built on a simple premise: the problem is not difficult thoughts and feelings that come into our attention, it is what we do with them that matters. ACT teaches psychological flexibility, the ability to hold difficult inner experiences without being controlled by them, while moving towards what genuinely matters to you.</p>
+                <p>Its core processes, values clarification, committed action, defusion from unhelpful thoughts, and acceptance of what cannot be changed, sit naturally alongside Stoic philosophy.</p>
                 <p class="reference">Hayes, S. C., Strosahl, K. D., & Wilson, K. G. (1999). Acceptance and commitment therapy: An experiential approach to behavior change. Guilford Press.</p>
                 <div class="application">
                     <strong>In the programme</strong>
-                    ACT tools are woven throughout, becoming particularly important during the more demanding phases. You will learn to observe your thoughts and emotions without being ruled by them, and to act from your values regardless of what you happen to be feeling in the moment.
+                    ACT tools are woven throughout the programme. You will learn to observe your thoughts and emotions without being ruled by them, and to act from your values regardless of what you happen to be feeling in the moment.
                 </div>
             </div>
         </div>
@@ -577,25 +609,35 @@
         <div class="framework">
             <div class="framework-meta">
                 <div class="framework-number">09</div>
-                <span class="framework-origin">Psychophysiology</span>
+                <span class="framework-origin">Physiological Health</span>
                 <p class="framework-author">Multiple contributors<br>ongoing</p>
             </div>
             <div class="framework-body">
                 <h2>Physiological Health</h2>
                 <p>The body is not separate from the mind. Sleep, movement, nutrition, and sunlight directly regulate neurotransmitter activity, and through that, the quality of your thoughts, the stability of your emotions, and your capacity to regulate your actions. A man who sleeps poorly, moves rarely, eats carelessly, and doesn't venture outside is fighting himself before the day has begun.</p>
-                <p>This is not about aesthetics or performance metrics. It is about understanding that the biological substrate of your psychology is within your control, and that ignoring it while trying to do inner work is like trying to build a house on unstable ground.</p>
+                <p>This is not about aesthetics or performance metrics. It is about understanding that the biological substrate of your psychology is within your control, and that ignoring it while wanting to feel fulfilled and complete is like trying to build a house on with bad quality bricks.</p>
                 <div class="application">
                     <strong>In the programme</strong>
-                    Physiological habits are tracked alongside psychological ones in the daily journal. Sleep, movement, nutrition, and sunlight are treated as foundational disciplines, not optional extras, because the research is clear: you cannot think, feel, or grow your way out of a body that is chronically under-resourced.
+                    Physiological habits are introduced and tracked in a daily journal. Sleep, movement, nutrition, and sunlight are treated as foundational building blocks, not optional extras, because the research is clear: you cannot think, feel, or grow your best from a body that is chronically under-resourced.
                 </div>
             </div>
         </div>
+
         <div class="bottom-cta">
             <p>These frameworks don't exist in isolation. In the programme, they form a single integrated path.</p>
             <a href="pricing.html" class="cta-btn">Begin the Journey</a>
         </div>
 
     </div>
+
+    <script>
+        function toggleStatement() {
+            const body = document.getElementById('statementBody');
+            const btn = document.getElementById('statementToggle');
+            const isOpen = body.classList.toggle('open');
+            btn.textContent = isOpen ? 'Close' : 'Expand';
+        }
+    </script>
 
 </body>
 </html>
