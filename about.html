@@ -162,6 +162,164 @@
             margin: 0 auto;
         }
 
+        /* ── WHO I AM INTRO (photo + traits) ── */
+        .who-i-am-intro {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .who-i-am-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid rgba(201,168,76,0.4);
+            flex-shrink: 0;
+        }
+
+        .who-i-am-traits {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .who-i-am-traits li {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .who-i-am-traits li::before {
+            content: '✦';
+            color: var(--gold);
+            font-size: 0.6rem;
+            margin-right: 0.6rem;
+        }
+
+        /* ── CREDENTIALS ── */
+        .who-i-am-credentials {
+            max-width: 700px;
+            margin: 3rem auto 0;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(201,168,76,0.15);
+            text-align: left;
+        }
+
+        .credentials-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.8;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .credentials-list + .credentials-label {
+            margin-top: 2rem;
+        }
+
+        .credentials-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .credentials-list li {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #c8bfaa;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .credentials-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+
+        .credentials-expand {
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(201,168,76,0.1);
+            padding-top: 1.25rem;
+        }
+
+        .credentials-expand summary {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+
+        .credentials-expand summary:hover {
+            opacity: 1;
+        }
+
+        .credentials-expand summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .credentials-expand summary::before {
+            content: '+';
+            color: var(--gold);
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .credentials-expand[open] summary::before {
+            content: '–';
+        }
+
+        .credentials-expand + .credentials-expand {
+            margin-top: 0.75rem;
+            padding-top: 1.25rem;
+        }
+
+        .credentials-sublist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .credentials-sublist li {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #c8bfaa;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .credentials-sublist li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+
         /* ── STORY BODY ── */
         .story {
             max-width: 680px;
@@ -291,6 +449,28 @@
             .pull-quote {
                 padding-left: 1.2rem;
             }
+
+            .who-i-am-intro {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .who-i-am-traits {
+                align-items: center;
+            }
+
+            .who-i-am-credentials {
+                text-align: center;
+            }
+
+            .credentials-list li {
+                padding-left: 0;
+            }
+
+            .credentials-list li::before {
+                content: '';
+            }
         }
     </style>
 </head>
@@ -312,7 +492,43 @@
     <!-- PAGE HEADER -->
     <div class="page-hero">
         <span class="page-label">Who I Am</span>
-        <h1>I too, was once the boy in search of something more.</h1>
+
+        <div class="who-i-am-intro">
+            <img src="assets/images/tim-portrait.jpg" alt="Tim Newnham" class="who-i-am-photo">
+            <ul class="who-i-am-traits">
+                <li>Husband and Father</li>
+                <li>Psychologist</li>
+                <li>Former Australian Infantry Soldier</li>
+                <li>Cyclist</li>
+                <li>Climber</li>
+                <li>Outdoorsman</li>
+            </ul>
+        </div>
+
+        <div class="who-i-am-credentials">
+            <span class="credentials-label">Certifications & Education</span>
+            <ul class="credentials-list">
+                <li>BSc Psychology, University of Groningen</li>
+                <li>MSc Psychology, University of Groningen (in progress)</li>
+                <li>Certificate IV in Leadership and Management</li>
+                <li>Certificate IV in Fitness</li>
+                <li>Certificate III in Leadership and Training</li>
+                <li>Wellness Coach Level 1</li>
+                <li>Several leadership courses throughout the Army</li>
+            </ul>
+
+            <span class="credentials-label">Awards & Recognition</span>
+            <ul class="credentials-list">
+                <li>Champion Soldier 2011, First Battalion, Royal Australian Regiment</li>
+                <li>Skill at Arms Award</li>
+                <li>Crossed Rifles Award</li>
+                <li>Duke of Gloucester Cup, 1RAR Team Member</li>
+                <li>NATO Non-Article 5 Medal with Clasp, ISAF</li>
+                <li>Afghanistan Medal</li>
+                <li>Australian Active Service Medal with Clasp ICAT</li>
+                <li>Returned from Active Service Badge</li>
+            </ul>
+        </div>
     </div>
 
     <!-- STORY -->
