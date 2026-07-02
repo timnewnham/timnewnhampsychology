@@ -448,7 +448,14 @@
             }
 
             .hero-title h1 {
-                font-size: 1.6rem;
+                font-size: clamp(1.1rem, 5vw, 2.2rem);
+                letter-spacing: 0.06em;
+                white-space: nowrap;
+            }
+
+            .hero-title .subtitle {
+                font-size: clamp(0.8rem, 4vw, 1.1rem);
+                white-space: nowrap;
             }
 
             .crisis-list {
@@ -491,7 +498,7 @@
         </div>
 
         <div class="hero-title">
-            <h1>Tim Newnham<br>Psychology</h1>
+            <h1>Tim Newnham Psychology</h1>
             <p class="subtitle">Coaching For Men</p>
             <p class="subtitle">Initiation | Meaning | Performance</p>
         </div>
