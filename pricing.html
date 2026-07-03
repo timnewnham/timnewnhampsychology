@@ -54,10 +54,12 @@
 
         .nav-links {
             display: flex;
-            flex: 1;
-            justify-content: center;
             gap: 2.5rem;
             list-style: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .nav-links a {
@@ -658,6 +660,7 @@
                 top: var(--nav-height);
                 left: 0;
                 right: 0;
+                transform: none;
                 background: rgba(10,10,10,0.98);
                 padding: 2rem;
                 gap: 1.5rem;
@@ -743,7 +746,7 @@
                             <li>Physical challenge components</li>
                             <li>Weekly one-on-one sessions</li>
                             <li>Active communication throughout the week</li>
-                            <li>Awarded "The Binding Knot", granting community access</li>
+                            <li>Awarded "The Binding Knot", granting <a href="community.html" style="color: var(--gold); text-decoration: underline;">community access</a></li>
                         </ul>
                         <div class="card-price">€1,500</div>
                         <p class="card-price-note">Full 14-week programme</p>
@@ -758,7 +761,7 @@
                             <li>More challenging homework objectives</li>
                             <li>Full Crucible experience</li>
                             <li>Extended reflection exercises</li>
-                            <li>Awarded "The Fellow's Knot", granting more community responsibilities</li>
+                            <li>Awarded "The Fellow's Knot", granting more <a href="community.html" style="color: var(--gold); text-decoration: underline;">community responsibilities</a></li>
                         </ul>
                         <div class="card-price">€1,500</div>
                         <p class="card-price-note">Full 14-week programme</p>
