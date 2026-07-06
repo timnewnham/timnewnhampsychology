@@ -441,6 +441,16 @@
         }
 
         /* ── MOBILE ── */
+        /* Prevent side-cropping on tall/narrow viewports (tablets, phones):
+           cover forces the image to fill the full 100vh height, which on a
+           tall-but-narrow screen crops the left/right edges of the scene. */
+        @media (max-width: 1024px) {
+            .hero-img-desktop,
+            .hero-img-mobile {
+                object-fit: contain;
+            }
+        }
+
         @media (max-width: 640px) {
             nav {
                 padding: 0 1.5rem;
