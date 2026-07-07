@@ -164,50 +164,9 @@
 
         /* ── HERO SECTION ── */
         .hero {
-            position: relative;
             width: 100%;
-            height: 100vh;
-            min-height: 600px;
-            overflow: hidden;
-            cursor: default;
-        }
-
-        .hero-img-desktop {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-        }
-
-        .hero-img-mobile {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            display: none;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.35);
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .hero-title {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            padding: calc(var(--nav-height) + 4rem) 2rem 4rem;
             text-align: center;
-            z-index: 4;
-            pointer-events: none;
         }
 
         .hero-title h1 {
@@ -216,7 +175,6 @@
             font-weight: 700;
             letter-spacing: 0.1em;
             color: var(--text);
-            text-shadow: 0 2px 20px rgba(0,0,0,0.9);
             line-height: 1.1;
         }
 
@@ -228,7 +186,31 @@
             color: var(--gold-light);
             letter-spacing: 0.1em;
             margin-top: 0.5rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero-painting-wrap {
+            max-width: 480px;
+            margin: 3rem auto 0;
+        }
+
+        .hero-painting {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 2px solid var(--gold);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .hero-credit {
+            font-family: 'Crimson Pro', serif;
+            font-size: 0.8rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        .hero-credit a {
+            color: var(--text-muted);
         }
 
         /* ── CONTENT SECTIONS ── */
@@ -314,13 +296,6 @@
         }
 
         /* ── MOBILE ── */
-        @media (max-width: 1024px) {
-            .hero-img-desktop,
-            .hero-img-mobile {
-                object-fit: contain;
-            }
-        }
-
         @media (max-width: 640px) {
             nav {
                 padding: 0 1.5rem;
@@ -349,23 +324,13 @@
                 z-index: 99;
             }
 
-            .hero-img-desktop {
-                display: none;
-            }
-
-            .hero-img-mobile {
-                display: block;
-            }
-
             .hero-title h1 {
-                font-size: clamp(1.1rem, 5vw, 2.2rem);
+                font-size: clamp(1.4rem, 6vw, 2.2rem);
                 letter-spacing: 0.06em;
-                white-space: nowrap;
             }
 
             .hero-title .subtitle {
-                font-size: clamp(0.8rem, 4vw, 1.1rem);
-                white-space: nowrap;
+                font-size: clamp(0.85rem, 4vw, 1.1rem);
             }
         }
     </style>
@@ -389,17 +354,16 @@
     <div class="nav-backdrop" id="navBackdrop"></div>
 
     <section class="hero" id="hero">
-        <img src="images/dragon-landscape.png" alt="A young man facing a dragon, a myth of confrontation and transformation" class="hero-img-desktop">
-        <img src="images/dragon-portrait.png" alt="A young man facing a dragon, a myth of confrontation and transformation" class="hero-img-mobile">
-
-        <div class="hero-overlay"></div>
-
         <div class="hero-title">
             <h1>Tim Newnham Psychology</h1>
             <p class="subtitle">Coaching For Men</p>
             <p class="subtitle">Initiation | Meaning | Performance</p>
         </div>
 
+        <div class="hero-painting-wrap">
+            <img src="images/raphael-saint-george.jpg" alt="Saint George on horseback spearing a dragon, with the rescued princess praying in the background" class="hero-painting">
+            <p class="hero-credit">Raphael, <em>Saint George and the Dragon</em>, c. 1506. <a href="https://www.nga.gov/artworks/28-saint-george-and-dragon" target="_blank" rel="noopener">National Gallery of Art</a>, Washington. Public domain.</p>
+        </div>
     </section>
 
     <section class="section" id="dragon-quote">
@@ -409,8 +373,8 @@
         </div>
         <div class="crisis-ctas">
             <a href="for-you.html#archetypes" class="cta-btn">The Hero</a>
-            <a href="methods.html" class="cta-btn outline">The Sword</a>
-            <a href="for-you.html" class="cta-btn outline">The Dragon</a>
+            <a href="methods.html" class="cta-btn">The Sword</a>
+            <a href="for-you.html" class="cta-btn">The Dragon</a>
         </div>
     </section>
 
