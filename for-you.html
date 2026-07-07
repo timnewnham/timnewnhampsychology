@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Who This Is For — Tim Newnham Psychology</title>
+    <title>Is This For You? — Tim Newnham Psychology</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
@@ -156,9 +156,61 @@
             padding: 6rem 2rem 10rem;
         }
 
+        /* ── PROBLEM SECTION ── */
+        .problem-section {
+            max-width: 780px;
+            margin: 0 auto 7rem;
+        }
+
+        .problem-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--text);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .problem-section p {
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            font-weight: 300;
+            line-height: 1.9;
+            color: #c8bfaa;
+        }
+
+        .problem-section p + p {
+            margin-top: 1.5rem;
+        }
+
+        .crisis-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 0.8rem 1.5rem;
+            margin: 1.5rem 0 1.5rem;
+        }
+
+        .crisis-list li {
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            font-weight: 300;
+            line-height: 1.6;
+            color: #c8bfaa;
+            padding-left: 1.4rem;
+            position: relative;
+        }
+
+        .crisis-list li::before {
+            content: '—';
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+        }
+
         .archetypes-header {
             text-align: center;
             margin-bottom: 3.5rem;
+            scroll-margin-top: calc(var(--nav-height) + 1.5rem);
         }
 
         .archetypes-header h2 {
@@ -249,6 +301,10 @@
                 grid-template-columns: 1fr;
                 gap: 0.8rem;
             }
+
+            .crisis-list {
+                grid-template-columns: 1fr;
+            }
         }
 
         .nav-burger {
@@ -288,26 +344,49 @@
     <nav>
         <a href="index.html" class="nav-logo">Tim Newnham Psychology</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html#crisis">The problem</a></li>
-            <li><a href="for-you.html">For whom?</a></li>
-            <li><a href="about.html">He who guides thee</a></li>
-            <li><a href="methods.html">The stones</a></li>
+            <li><a href="for-you.html">The Problem</a></li>
+            <li><a href="for-you.html#archetypes">Is This For You?</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="methods.html">Theories Used</a></li>
             <li><a href="community.html">The Fellowship</a></li>
-            <li><a href="pricing.html">The fare</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
             <li><a href="pricing.html#contactForm">Contact</a></li>
         </ul>
         <button class="nav-burger" id="navBurger" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
     </nav>
 
     <div class="page-hero">
-        <span class="page-label">Who is this program for?</span>
+        <span class="page-label">Is this program for you?</span>
         <h1>For those yet to face the dragon, or have faced it and lost</h1>
-        <p class="intro">"In myths the hero is the one who conquers the dragon, not the one who is devoured by it. And yet both have to deal with the same dragon. Also, he is no hero who never met the dragon, or who, if he once saw it, declared afterwards that he saw nothing. Equally, only one who has risked the fight with the dragon and is not overcome by it wins the hoard, the 'treasure hard to attain.' He alone has a genuine claim to self-confidence, for he has faced the dark ground of his self and thereby has gained himself." — C.G. Jung</p>
+        <p class="intro">Today's men are facing a meaning crisis. Here is what that looks like, and how to know if you're in it.</p>
     </div>
 
     <div class="content">
 
-        <div class="archetypes-header">
+        <div class="problem-section">
+            <h2>Today's men face a meaning crisis.</h2>
+            <p>We as a society are witnessing an increase in depression, loneliness, suicide, burnouts, divorces and escapism. Men are in desperate need of a path to follow, somewhere that offers them structure and stability, comfort in knowing what they need to do and how to go about it. As society transitions away from initiation procedures and shifts towards fewer fathers in the household, fewer male teachers in schools, and less attendance at organisations and clubs where guidance and structure could traditionally be found, where are they to turn?</p>
+            <p>They lack:</p>
+            <ul class="crisis-list">
+                <li>Community and relatedness</li>
+                <li>Purpose, direction and a sense of significance</li>
+                <li>Clarity of societal role</li>
+                <li>Duty and responsibility</li>
+                <li>Challenge and discomfort</li>
+                <li>Discipline, grit, strength, resilience</li>
+                <li>Strong value systems</li>
+                <li>Healthy ideals and role models</li>
+                <li>Healthy daily habits</li>
+                <li>Guidance and structure from male leaders</li>
+            </ul>
+            <p>Unfortunately, this gap is currently being filled by social media influencers and grifters who offer immature and superficial advice on how to be a man in today's society. Outward displays of manhood are used to entice these young men, who are desperate for any kind of guidance, into imitating this behaviour and subscribing to payment plans that promise to help them get "there". These insecure and egotistical influencers exploit this desperation, leading young men further down the path of meaninglessness. The chase for material possessions, multiple girlfriends and an alpha-male physique only goes so far, and simply disconnects them further from experiencing long-lasting meaning and embracing their societal responsibilities. To them, however, this path looks far better than no path, which is what is currently being offered.</p>
+            <p>But there is a better path to take. Having observed this trend in society around me, I have dedicated the last five years of my life to developing this programme to counter this movement. No fads, no idolisation of myself, no sportscars. I don't do this for fame, or to fund a grandiose lifestyle on Ibiza. I do this because it needs to happen for the world to become a better place. I offer an initiation programme for young men transitioning into their adult societal roles, based on evidence-based research and theory. Without which, men remain in a perpetual state of feeling the need to prove their masculinity by displaying symbolic behaviours outwardly, rather than sitting comfortably in it.</p>
+            <p>This is a real, growing problem. The gap needs to be filled. It will either be filled professionally, or it will be exploited indefinitely.</p>
+        </div>
+
+        <div class="chapter-divider"><span>✦</span></div>
+
+        <div class="archetypes-header" id="archetypes">
             <h2>Do you see yourself here?</h2>
         </div>
 
