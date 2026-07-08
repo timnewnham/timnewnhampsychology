@@ -219,6 +219,44 @@
             color: #c8bfaa;
         }
 
+        .online-box {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 1.8rem 2rem;
+            border: 1px solid rgba(201,168,76,0.15);
+            margin-bottom: 4rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .online-box:hover {
+            border-color: rgba(201,168,76,0.35);
+        }
+
+        .online-box .tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .online-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+        }
+
+        .online-box p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: #c8bfaa;
+        }
+
         .launch-note {
             text-align: center;
             max-width: 680px;
@@ -285,6 +323,11 @@
             }
             .community-divider { display: none; }
             .community-col { padding: 0; }
+            .online-box {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
         }
 
         .nav-burger {
@@ -298,7 +341,7 @@
             line-height: 1;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             nav { padding: 0 1.5rem; }
             .nav-burger { display: flex; }
             .nav-links { display: none; }
@@ -329,7 +372,7 @@
             <li><a href="about.html">About Me</a></li>
             <li><a href="methods.html">Theories Used</a></li>
             <li><a href="community.html">The Fellowship</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="pricing.html">Programmes</a></li>
             <li><a href="pricing.html#contactForm">Contact</a></li>
         </ul>
         <button class="nav-burger" id="navBurger" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
@@ -352,25 +395,33 @@
             <div class="community-col">
                 <span class="tag">In person</span>
                 <h3>The Weekly Challenge</h3>
-                <p>For those local to the area, a recurring weekly physical challenge. These challenges are focused on building resilience, grit, strength, endurance and teamwork. Details on time and place shared with participants directly.</p>
+                <p>A recurring weekly physical challenge. These challenges are focused on building resilience, grit, strength, endurance and teamwork. Details on time and place shared with participants directly.</p>
             </div>
 
             <div class="community-divider"></div>
 
             <div class="community-col">
                 <span class="tag">In person</span>
-                <h3>The Monthly Gathering and Yearly Adventure</h3>
-                <p>For those local to the area, a recurring monthly in-person meetup. The meetups will include activities such as discussions on topics of personal growth, book readings and essay writing, skills development, community volunteer work, hobbies and activities, BBQs, and most importantly the support of each other at times of need. Additionally, once a year we will come together for an adventurous multi-day trip somewhere in Europe. Details on time and place shared with participants directly.</p>
+                <h3>The Monthly Gathering</h3>
+                <p>A recurring monthly in-person meetup. The meetups will include activities such as discussions on topics of personal growth, book readings and essay writing, skills development, community volunteer work, hobbies and activities, BBQs, and most importantly the support of each other at times of need. Details on time and place shared with participants directly.</p>
             </div>
 
             <div class="community-divider"></div>
 
             <div class="community-col">
-                <span class="tag">Online</span>
+                <span class="tag">In person</span>
+                <h3>The Yearly Adventure</h3>
+                <p>Once a year we will come together for an adventurous multi-day trip somewhere in Europe. A chance to test yourself alongside the men you've walked this path with. Details on time and place shared with participants directly.</p>
+            </div>
+
+        </div>
+
+        <div class="online-box">
+            <span class="tag">Online</span>
+            <div>
                 <h3>Community Discussion Forums</h3>
                 <p>An online space for past and current participants to stay connected with each other, to share what they're working through, and to keep each other on track and supported long after the formal programme ends.</p>
             </div>
-
         </div>
 
         <div class="launch-note">
