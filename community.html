@@ -257,6 +257,61 @@
             color: #c8bfaa;
         }
 
+        .future-box {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            padding: 1.8rem 2rem;
+            border: 1px dashed rgba(201,168,76,0.25);
+            margin-bottom: 4rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .future-box:hover {
+            border-color: rgba(201,168,76,0.45);
+        }
+
+        .future-box .tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            opacity: 0.75;
+            flex-shrink: 0;
+        }
+
+        .future-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+        }
+
+        .future-box p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: #c8bfaa;
+        }
+
+        .future-box-image {
+            flex-shrink: 0;
+            width: 160px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .future-box-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            opacity: 0.9;
+        }
+
         .launch-note {
             text-align: center;
             max-width: 680px;
@@ -328,6 +383,15 @@
                 align-items: flex-start;
                 gap: 0.8rem;
             }
+            .future-box {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.2rem;
+            }
+            .future-box-image {
+                width: 100%;
+                height: auto;
+            }
         }
 
         .nav-burger {
@@ -387,15 +451,15 @@
     <div class="content">
 
         <div class="community-intro">
-            <p>Completing the programme is not the end of your journey, for it opens the door into something more enduring. Those who successfully complete the initiation programme are welcomed as members into an active community of men that uphold the same value system.</p>
+            <p>Completing the programme is not the end of your journey, for it opens the door into something more enduring. Those who successfully complete the initiation programme are welcomed as members into an active community of men that have proven they uphold the same value system.</p>
         </div>
 
         <div class="community-columns">
 
             <div class="community-col">
                 <span class="tag">In person</span>
-                <h3>The Weekly Challenge</h3>
-                <p>A recurring weekly physical challenge. These challenges are focused on building resilience, grit, strength, endurance and teamwork. Details on time and place shared with participants directly.</p>
+                <h3>The Weekly Meet-up</h3>
+                <p>A recurring weekly physical workout. These workouts are focused on building resilience, grit, strength, endurance and teamwork. Details on time and place shared with participants directly.</p>
             </div>
 
             <div class="community-divider"></div>
@@ -424,8 +488,20 @@
             </div>
         </div>
 
+        <div class="future-box">
+            <span class="tag">Future Plans</span>
+            <div style="flex: 1;">
+                <h3>A Physical Meeting Place</h3>
+                <p>I am working towards developing a community space close to Groningen, a physical home for The Fellowship where members can meet, exercise, read, engage and support one another in person.</p>
+            </div>
+            <div class="future-box-image">
+                <!-- Replace src below with your image or drawing once ready -->
+                <img src="fellowship-space.jpg" alt="Concept drawing of the future Fellowship community space">
+            </div>
+        </div>
+
         <div class="launch-note">
-            <p>This community is currently being established alongside the first cohorts of the programme itself. Early participants won't just be joining The Fellowship, they'll be helping shape it's future.</p>
+            <p>This community is currently being established alongside the first cohorts of the programme itself. Early participants won't just be joining The Fellowship, they'll be helping shape its future.</p>
         </div>
 
         <div class="chapter-divider"><span>✦</span></div>
