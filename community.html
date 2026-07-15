@@ -82,22 +82,8 @@
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover { color: var(--gold); }
-        .nav-links a:hover::after { width: 100%; }
-
-        .nav-login {
-            font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--dark);
-            background: var(--gold);
-            padding: 0.5rem 1.2rem;
-            text-decoration: none;
-            transition: background 0.3s ease;
-        }
-
-        .nav-login:hover { background: var(--gold-light); }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
         .page-hero {
             width: 100%;
@@ -431,13 +417,13 @@
     <nav>
         <a href="index.html" class="nav-logo">Tim Newnham Psychology</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="for-you.html">The Problem</a></li>
-            <li><a href="for-you.html#archetypes">Is This For You?</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="methods.html">Theories Used</a></li>
-            <li><a href="community.html">The Fellowship</a></li>
-            <li><a href="pricing.html">Programmes</a></li>
-            <li><a href="pricing.html#contactForm">Contact</a></li>
+            <li><a href="for-you-initiation.html">The Problem</a></li>
+            <li><a href="for-you-initiation.html">Is This For You?</a></li>
+            <li><a href="about-initiation.html">About Me</a></li>
+            <li><a href="methods-initiation.html">Theories Used</a></li>
+            <li><a href="community.html" class="active">The Fellowship</a></li>
+            <li><a href="pricing-initiation.html">Programmes</a></li>
+            <li><a href="pricing-initiation.html#contactForm">Contact</a></li>
         </ul>
         <button class="nav-burger" id="navBurger" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
     </nav>
@@ -508,7 +494,7 @@
 
         <div style="text-align:center;">
             <p style="font-size:1.1rem; font-weight:300; color:var(--text-muted); font-style:italic; margin-bottom:2rem;">Access is earned through the programme. Begin the journey first.</p>
-            <a href="pricing.html" class="cta-btn">Explore the Paths</a>
+            <a href="pricing-initiation.html" class="cta-btn">Explore the Paths</a>
         </div>
 
     </div>

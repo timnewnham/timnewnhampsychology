@@ -54,7 +54,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 3rem;
-            background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+            background: linear-gradient(to bottom, rgba(10,10,10,0.9), transparent);
             transition: background 0.4s ease;
         }
 
@@ -71,25 +71,22 @@
             color: var(--gold);
             text-transform: uppercase;
             text-decoration: none;
+            z-index: 2;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
             list-style: none;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
         }
 
         .nav-links a {
             font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             font-weight: 400;
-            letter-spacing: 0.18em;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: var(--text-muted);
+            color: var(--text);
             text-decoration: none;
             transition: color 0.3s ease;
             position: relative;
@@ -106,231 +103,152 @@
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--gold);
+        .nav-links a:hover {
+            color: var(--gold-light);
         }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-      .nav-burger {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.8rem;
-            color: #C9A84C;
-            padding: 0.2rem 0.5rem;
-            line-height: 1;
-        }
-        
-        .nav-login {
-            font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--dark);
-            background: var(--gold);
-            padding: 0.5rem 1.2rem;
-            text-decoration: none;
-            transition: background 0.3s ease;
-        }
-
-        .nav-login:hover {
-            background: var(--gold-light);
-        }
-
-        /* ── MOBILE MENU BACKDROP ── */
-        .nav-backdrop {
-            display: none;
-            position: fixed;
-            top: var(--nav-height);
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.55);
-            z-index: 98;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-backdrop.open {
-            display: block;
-            opacity: 1;
-        }
-
-        /* ── HERO SECTION ── */
-        .hero {
+        /* ── PAGE INTRO ── */
+        .intro-band {
             width: 100%;
-            padding: calc(var(--nav-height) + 4rem) 2rem 4rem;
+            padding: calc(var(--nav-height) + 3.5rem) 2rem 3rem;
             text-align: center;
         }
 
-        .hero-title h1 {
+        .intro-band h1 {
             font-family: 'Cinzel', serif;
-            font-size: clamp(1.8rem, 4vw, 3.5rem);
+            font-size: clamp(1.4rem, 3vw, 2.4rem);
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             color: var(--text);
-            line-height: 1.1;
         }
 
-        .hero-title .subtitle {
+        .intro-band p {
             font-family: 'Crimson Pro', serif;
-            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            font-size: clamp(0.85rem, 1.3vw, 1.05rem);
             font-weight: 300;
             font-style: italic;
-            color: var(--gold-light);
-            letter-spacing: 0.1em;
-            margin-top: 0.5rem;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            margin-top: 0.6rem;
         }
 
-        .hero-painting-wrap {
-            max-width: 480px;
-            margin: 3rem auto 0;
-        }
-
-        .hero-painting {
+        /* ── TWO-COLUMN CHOOSER ── */
+        .chooser-wrap {
             width: 100%;
-            height: auto;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 2rem 6rem;
+        }
+
+        .chooser {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .chooser-col {
+            position: relative;
+            flex: 1;
             display: block;
+            text-decoration: none;
+        }
+
+        .chooser-col-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            text-align: center;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .chooser-col:hover .chooser-col-title {
+            color: var(--gold);
+        }
+
+        .chooser-image-wrap {
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            overflow: hidden;
             border: 2px solid var(--gold);
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
 
-        .hero-credit {
-            font-family: 'Crimson Pro', serif;
-            font-size: 0.8rem;
-            font-style: italic;
-            color: var(--text-muted);
-            margin-top: 1rem;
-        }
-
-        .hero-credit a {
-            color: var(--text-muted);
-        }
-
-        /* ── CONTENT SECTIONS ── */
-        .section {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 8rem 2rem;
-        }
-
-        .section-label {
-            font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
+        .chooser-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
-            text-align: center;
+            filter: brightness(0.8) saturate(0.95);
+            transform: scale(1.02);
+            transition: transform 0.6s ease, filter 0.4s ease;
         }
 
-        .cta-btn {
-            display: inline-block;
-            font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--dark);
-            background: var(--gold);
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            transition: background 0.3s ease, transform 0.2s ease;
+        .chooser-col:hover .chooser-image-wrap img {
+            transform: scale(1.06);
+            filter: brightness(0.95) saturate(1);
         }
 
-        .cta-btn:hover {
-            background: var(--gold-light);
-            transform: translateY(-2px);
-        }
-
-        .cta-btn.outline {
-            background: transparent;
-            color: var(--gold);
-            border: 1px solid rgba(201,168,76,0.4);
-        }
-
-        .cta-btn.outline:hover {
-            background: rgba(201,168,76,0.08);
-        }
-
-        .crisis-ctas {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 3rem;
-        }
-
-        /* ── DRAGON QUOTE ── */
-        .pull-quote {
-            max-width: 780px;
-            margin: 0 auto;
-            border-left: 2px solid var(--gold);
-            padding: 0.5rem 0 0.5rem 2rem;
-        }
-
-        .pull-quote p {
+        .chooser-col-sub {
             font-family: 'Crimson Pro', serif;
-            font-size: clamp(1.15rem, 2vw, 1.5rem);
-            font-style: italic;
+            font-size: clamp(0.78rem, 1vw, 0.9rem);
             font-weight: 300;
-            color: var(--gold-light);
-            line-height: 1.8;
-        }
-
-        .pull-quote .quote-author {
-            display: block;
-            margin-top: 1.2rem;
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+            font-style: italic;
             color: var(--text-muted);
-            font-style: normal;
+            text-align: center;
+            max-width: 240px;
+            margin: 1rem auto 0;
+            line-height: 1.6;
         }
 
         /* ── MOBILE ── */
-        @media (max-width: 1024px) {
+        .nav-burger {
+            display: none;
+        }
+
+        @media (max-width: 900px) {
             nav {
                 padding: 0 1.5rem;
+                justify-content: center;
             }
 
-            .nav-burger {
-                display: flex;
+            .nav-logo {
+                position: absolute;
+                left: 1.5rem;
             }
 
             .nav-links {
-                display: none;
+                gap: 1.6rem;
             }
 
-            .nav-links.open {
-                display: flex;
+            .nav-links a {
+                font-size: 0.62rem;
+                letter-spacing: 0.14em;
+            }
+
+            .intro-band {
+                padding: calc(var(--nav-height) + 2rem) 1.5rem 2rem;
+            }
+
+            .chooser-wrap {
+                padding: 0 1.2rem 4rem;
+            }
+
+            .chooser {
                 flex-direction: column;
-                position: fixed;
-                top: var(--nav-height);
-                left: 0;
-                right: 0;
-                transform: none;
-                background: rgba(10,10,10,0.98);
-                padding: 2rem;
-                gap: 1.5rem;
-                border-bottom: 1px solid rgba(201,168,76,0.15);
-                z-index: 99;
+                gap: 2.5rem;
             }
 
-            .hero-title h1 {
-                font-size: clamp(1.4rem, 6vw, 2.2rem);
-                letter-spacing: 0.06em;
-            }
-
-            .hero-title .subtitle {
-                font-size: clamp(0.85rem, 4vw, 1.1rem);
+            .chooser-image-wrap {
+                max-width: 280px;
+                margin: 0 auto;
             }
         }
     </style>
@@ -339,67 +257,43 @@
 
     <nav id="navbar">
         <a href="index.html" class="nav-logo">Tim Newnham Psychology</a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="for-you.html">The Problem</a></li>
-            <li><a href="for-you.html#archetypes">Is This For You?</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="methods.html">Theories Used</a></li>
-            <li><a href="community.html">The Fellowship</a></li>
-            <li><a href="pricing.html">Programmes</a></li>
-            <li><a href="pricing.html#contactForm">Contact</a></li>
+        <ul class="nav-links">
+            <li><a href="for-you-initiation.html">Initiation</a></li>
+            <li><a href="for-you-meaning.html">Meaning</a></li>
         </ul>
-        <button class="nav-burger" id="navBurger" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
     </nav>
 
-    <div class="nav-backdrop" id="navBackdrop"></div>
+    <div class="intro-band">
+        <h1>Coaching For Men</h1>
+        <p>Choose the path that meets you where you are.</p>
+    </div>
 
-    <section class="hero" id="hero">
-        <div class="hero-title">
-            <h1>Tim Newnham Psychology</h1>
-            <p class="subtitle">Coaching For Men</p>
-            <p class="subtitle">Initiation | Meaning | Performance</p>
-        </div>
+    <div class="chooser-wrap">
+        <div class="chooser">
 
-        <div class="hero-painting-wrap">
-            <img src="images/Raphael-saint-george.jpg" alt="Saint George on horseback spearing a dragon, with the rescued princess praying in the background" class="hero-painting">
-            <p class="hero-credit">Raphael, <em>Saint George and the Dragon</em>, c. 1506. <a href="https://www.nga.gov/artworks/28-saint-george-and-dragon" target="_blank" rel="noopener">National Gallery of Art</a>, Washington. Public domain.</p>
-        </div>
-    </section>
+            <a href="for-you-initiation.html" class="chooser-col" aria-label="Initiation">
+                <div class="chooser-col-title">Initiation</div>
+                <div class="chooser-image-wrap">
+                    <img src="images/Initiation-image.jpg" alt="Initiation">
+                </div>
+                <p class="chooser-col-sub">For those without a map into manhood.</p>
+            </a>
 
-    <section class="section" id="dragon-quote">
-        <div class="pull-quote">
-            <p>"In myths the hero is the one who conquers the dragon, not the one who is devoured by it. And yet both have to deal with the same dragon. Also, he is no hero who never met the dragon, or who, if he once saw it, declared afterwards that he saw nothing. Equally, only one who has risked the fight with the dragon and is not overcome by it wins the hoard, the 'treasure hard to attain'. He alone has a genuine claim to self-confidence, for he has faced the dark ground of his self and thereby has gained himself."</p>
-            <span class="quote-author">— C.G. Jung</span>
+            <a href="for-you-meaning.html" class="chooser-col" aria-label="Meaning">
+                <div class="chooser-col-title">Meaning</div>
+                <div class="chooser-image-wrap">
+                    <img src="images/Meaning-image.jpg" alt="Meaning">
+                </div>
+                <p class="chooser-col-sub">For those going through the motions.</p>
+            </a>
+
         </div>
-        <div class="crisis-ctas">
-            <a href="for-you.html#archetypes" class="cta-btn">The Hero</a>
-            <a href="methods.html" class="cta-btn">The Sword</a>
-            <a href="for-you.html" class="cta-btn">The Dragon</a>
-        </div>
-    </section>
+    </div>
 
     <script>
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            const backdrop = document.getElementById('navBackdrop');
-            const isOpen = navLinks.classList.toggle('open');
-            backdrop.classList.toggle('open', isOpen);
-        }
-
-        function closeMenu() {
-            document.getElementById('navLinks').classList.remove('open');
-            document.getElementById('navBackdrop').classList.remove('open');
-        }
-
-        document.getElementById('navBackdrop').addEventListener('click', closeMenu);
-
-        document.querySelectorAll('#navLinks a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
+            navbar.classList.toggle('scrolled', window.scrollY > 20);
         });
     </script>
 
