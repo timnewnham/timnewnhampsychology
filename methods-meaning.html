@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methods — Tim Newnham Psychology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E8C97A;
+            --dark: #0A0A0A;
+            --text: #F0EAD6;
+            --text-muted: #8a8070;
+            --nav-height: 70px;
+        }
+
+        html, body {
+            width: 100%;
+            background: var(--dark);
+            color: var(--text);
+            font-family: 'Crimson Pro', Georgia, serif;
+            animation: bodyFade 1s ease both;
+        }
+
+        @keyframes bodyFade { from { opacity: 0; } to { opacity: 1; } }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: var(--nav-height);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3rem;
+            background: rgba(10,10,10,0.97);
+            border-bottom: 1px solid rgba(201,168,76,0.15);
+        }
+
+        .nav-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .nav-links a {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+        .page-hero {
+            width: 100%;
+            padding-top: calc(var(--nav-height) + 6rem);
+            padding-bottom: 4rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 60px; height: 1px;
+            background: var(--gold);
+            opacity: 0.4;
+        }
+
+        .page-label {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            line-height: 1.15;
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .page-hero .intro {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .content {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 6rem 2rem 10rem;
+        }
+
+        .framework {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            margin-bottom: 5rem;
+            padding-bottom: 5rem;
+            border-bottom: 1px solid rgba(201,168,76,0.08);
+            scroll-margin-top: calc(var(--nav-height) + 1.5rem);
+        }
+
+        .framework:last-of-type {
+            border-bottom: none;
+        }
+
+        .framework-meta {
+            padding-top: 0.3rem;
+        }
+
+        .framework-number {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: rgba(201,168,76,0.15);
+            line-height: 1;
+            margin-bottom: 0.8rem;
+        }
+
+        .framework-origin {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.9;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .framework-author {
+            font-size: 1rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 0.3rem;
+        }
+
+        .framework-body h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1.2rem;
+            line-height: 1.3;
+        }
+
+        .framework-body p {
+            font-size: clamp(1rem, 1.3vw, 1.1rem);
+            font-weight: 300;
+            line-height: 1.9;
+            color: #c8bfaa;
+            margin-bottom: 1rem;
+        }
+
+        .framework-body .application {
+            margin-top: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            border-left: 2px solid rgba(201,168,76,0.3);
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .framework-body .application strong {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-style: normal;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .bottom-cta {
+            text-align: center;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(201,168,76,0.15);
+        }
+
+        .bottom-cta p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--dark);
+            background: var(--gold);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .reference {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            line-height: 1.7;
+            padding: 1rem 1.5rem;
+            border-left: 2px solid rgba(201,168,76,0.3);
+            margin-top: 1.5rem;
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* ── COLLAPSIBLE STATEMENT ── */
+        .statement {
+            margin-bottom: 6rem;
+        }
+
+        .statement-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(201,168,76,0.15);
+            user-select: none;
+        }
+
+        .statement-label {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .statement-toggle {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            background: none;
+            border: 1px solid rgba(201,168,76,0.2);
+            padding: 0.4rem 1rem;
+            cursor: pointer;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .statement-toggle:hover {
+            color: var(--gold);
+            border-color: rgba(201,168,76,0.5);
+        }
+
+        .statement-body {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .statement-body.open {
+            max-height: 5000px;
+            opacity: 1;
+        }
+
+        .statement-section {
+            margin-bottom: 2.5rem;
+            padding-top: 2rem;
+        }
+
+        .statement-section p,
+        .statement-metaphor p {
+            font-size: clamp(1rem, 1.3vw, 1.15rem);
+            font-weight: 300;
+            line-height: 1.9;
+            color: #c8bfaa;
+            margin-bottom: 1.2rem;
+        }
+
+        .statement-metaphor {
+            border-left: 2px solid rgba(201,168,76,0.3);
+            padding: 1rem 1.5rem;
+            margin: 2.5rem 0;
+            font-style: italic;
+        }
+
+        .statement-divider {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 4rem 0 2rem;
+            opacity: 0.8;
+        }
+
+        .statement-divider::before,
+        .statement-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .statement-divider span {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+            color: var(--gold);
+            white-space: nowrap;
+        }
+
+        .statement-section-label {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 1.2rem;
+        }
+
+        .nav-burger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--gold);
+            padding: 0.2rem 0.5rem;
+            line-height: 1;
+        }
+
+        @media (max-width: 1024px) {
+            nav { padding: 0 1.5rem; }
+            .nav-burger { display: flex; }
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                transform: none;
+                background: rgba(10,10,10,0.98);
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid rgba(201,168,76,0.15);
+                z-index: 99;
+            }
+            .framework { grid-template-columns: 1fr; gap: 1.5rem; }
+            .framework-number { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo">Tim Newnham Psychology</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="for-you-meaning.html">The Problem</a></li>
+            <li><a href="for-you-meaning.html#archetypes">Is This For You?</a></li>
+            <li><a href="about-meaning.html">About Me</a></li>
+            <li><a href="methods-meaning.html" class="active">Theories Used</a></li>
+            <li><a href="pricing-meaning.html">Programmes</a></li>
+            <li><a href="pricing-meaning.html#contactForm">Contact</a></li>
+        </ul>
+        <button class="nav-burger" id="navBurger" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+    </nav>
+
+    <div class="page-hero">
+        <span class="page-label">Theories Used</span>
+        <h1>Foundations placed by those who came before.</h1>
+        <p class="intro">Only the ideas strong enough to withstand the weathering of time remain.</p>
+        <p class="intro">Nothing here is invented by myself. Every framework has been tested and proven effective, by scholarship and through lived experience. These are the foundations the programme is built on.</p>
+    </div>
+
+    <div class="content">
+
+        <!-- COLLAPSIBLE STATEMENT -->
+        <div class="statement">
+
+            <div class="statement-header" onclick="toggleStatement()">
+                <span class="statement-label">A Word of Honesty</span>
+                <button class="statement-toggle" id="statementToggle">Expand</button>
+            </div>
+
+            <div class="statement-body" id="statementBody">
+
+                <div class="statement-section">
+                    <p>What I offer is not therapy, it's a toolbox you can carry for life. Covering this much ground in only 14 weeks means the work doesn't end when the programme does. It requires constant application and maintenance.</p>
+                    <p>This also means the theories I lean on are not to the same depth as if you were to go to a specialist. Take my application of Jungian theory as an example. Jungian analysts do deep, intensive work with a person multiple times a week, often for years, sometimes even for a lifetime. Not every man needs that. But every man can benefit from understanding archetypes, shadows, and what it means to integrate the parts of yourself you've kept hidden or weren't aware of. I've drawn from Jung, Moore, and Johnson to distil what I believe are the most practical tools for the everyday man, offering you frameworks and language you can actually use, long after we finish.</p>
+                    <p>However, ultimately, the only person who can change your life is you. I'm just here to help you find the way and support you through it.</p>
+                    <p>Additionally, I am not teaching you how to live like me. I am not perfect, and I have many faults. As much as I live as virtuously as I can and aim for balance, I am still and always will be a work in progress, just as we all are, and that is precisely the point. I simply incorporate the frameworks developed by people wiser than me into my own daily life to keep myself on the right track. And it does work.</p>
+                    <p>These theories do not lend themselves to a finished resting state of perfect and indefinite fulfilment. They are not applied once and then you are set for life. What I am teaching are frameworks that require daily application. They function as tools that, when used to keep us on the right path, mean that when we falter, and falter we will, we know how to get back up and keep going. We take the experience, learn from it, and grow.</p>
+                    <p>Anyone who claims to have a once applied cure to the meaning problem is simply a snake oil salesman. And frankly, they miss the beauty and the possibility for growth and opportunity found in sitting with the harder and imperfect parts of life.</p>
+                    <p>So, I will not stand here and claim to be holier than thou, or pretend I live some life of unbroken clarity. I am not the ideal man to strive towards, that would make me a myth. But I do aim to be an ideal guide: someone devoting his life to learning not only the best techniques, but how to present them, so I can walk the path alongside you and point the way forwards as best I possibly can.</p>
+                </div>
+
+                <div class="statement-metaphor">
+                    <p>Take the image on the home page as a metaphor. The dragon represents the snooze button on the alarm clock. The bad habit that persists when you want it gone. That part of yourself you find difficult to confront. Every challenge we come across throughout our day. I do not stand outside this fight you have with your dragon. The dragon is not something you slay once and forget. What I offer are the methods I have collected through my own studies and life experience, the same ones I apply to my own dragons. I know the arena this fight is fought in, I am here to pass on the knowledge.</p>
+                    <p>The frameworks that follow are not mine either. They are drawn from those who faced their own dragons long before us, philosophers, psychologists, and scientists, who each left behind what they learned, so that those who come after might face theirs a little better armed.</p>
+                </div>
+
+                <div class="statement-section">
+                    <span class="statement-section-label">What to Expect</span>
+                    <p>This is a semi-structured programme. This means that there is a clear framework, but you are not passive within it. The choices you make and the work you put in shape how it unfolds for you.</p>
+                    <p>It is a demanding programme. It will challenge you in ways you may not expect. That is not incidental, it is the very point. For this process to work, it has to be this way. Nothing changes if nothing changes. We embrace discomfort, as a necessary stage of growth.</p>
+                </div>
+
+            </div>
+
+            <div class="statement-divider">
+                <span>The Foundations</span>
+            </div>
+
+        </div>
+
+        <div class="framework">
+            <div class="framework-meta">
+                <div class="framework-number">01</div>
+                <span class="framework-origin">Analytical Psychology</span>
+                <p class="framework-author">Carl Gustav Jung<br>1875–1961</p>
+                <p class="framework-author">Robert Moore<br>1942–2016</p>
+                <p class="framework-author">Douglas Gillette<br>b. unknown - present</p>
+                <p class="framework-author">Robert A. Johnson<br>1921–2018</p>
+            </div>
+            <div class="framework-body">
+                <h2>Jungian Psychology</h2>
+                <p>Jung's work centres on the idea that the psyche is not simply rational, it contains depths that the conscious mind cannot fully see or control. The shadow, the archetypes, the process of individuation: these are concepts that shape how young men think, feel, and behave.</p>
+                <p>Understanding the shadow, the parts of yourself you've denied, suppressed, or never integrated, is foundational to genuine change. Without it, growth is shallow. In applying these frameworks practically, I draw heavily on the work of Robert Moore, Douglas Gillette, and Robert A. Johnson.</p>
+                <p class="reference">Jung, C. G. (1968). The archetypes and the collective unconscious. Princeton University Press.<br>Moore, R., & Gillette, D. (1990). King, warrior, magician, lover: Rediscovering the archetypes of the mature masculine. HarperSanFrancisco.<br>Johnson, R. A. (1991). Owning your own shadow: Understanding the dark side of the psyche. HarperSanFrancisco.</p>
+                <div class="application">
+                    <strong>In the programme</strong>
+                    Inner shadow work and archetype identification and activation are used to map psychological patterns and develop a more integrated sense of self.
+                </div>
+            </div>
+        </div>
+
+        <div class="framework">
+            <div class="framework-meta">
+                <div class="framework-number">02</div>
+                <span class="framework-origin">Stoic Philosophy</span>
+                <p class="framework-author">Epictetus, Marcus Aurelius, Seneca<br>c. 300 BCE – 180 CE</p>
+            </div>
+            <div class="framework-body">
+                <h2>Stoic Philosophy</h2>
+                <p>Stoicism is not about suppressing emotion. It is about distinguishing what is within your control from what is not, and directing your energy accordingly. For young men who feel anxious, overwhelmed, victimised, or reactive, this distinction is transformative.</p>
+                <p>The Stoics were practical philosophers. Their ideas were formed under heavy reflection and scrutiny of rationality. They lived not by comfort, but by virtue.</p>
+                <p class="reference">Marcus Aurelius. (2002). Meditations (G. Hays, Trans.). Modern Library. (Original work published c. 180 CE)<br>Epictetus. (2008). Discourses and selected writings (R. Dobbin, Trans.). Penguin Classics.<br>Seneca. (2004). Letters from a Stoic (R. Campbell, Trans.). Penguin Classics.</p>
+                <div class="application">
+                    <strong>In the programme</strong>
+                    Stoicism is both studied and practised. Clients read passages throughout the programme, learning to distinguish what is within their control from what is not, to choose the harder path knowing it leads to greater fulfilment, to live presently rather than anxiously, and to act virtuously without complaint or audience. Over time these are not techniques. They become beliefs.
+                </div>
+            </div>
+        </div>
+
+        <div class="framework">
+            <div class="framework-meta">
+                <div class="framework-number">03</div>
+                <span class="framework-origin">The Hero's Journey and Narrative Coaching</span>
+                <p class="framework-author">Joseph Campbell<br>1904–1987</p>
+                <p class="framework-author">David Drake<br>1961 – present</p>
+            </div>
+            <div class="framework-body">
+                <h2>The Hero's Journey</h2>
+                <p>Campbell's monomyth, the pattern of departure, initiation, and return found across every culture's mythology, is not merely a storytelling structure. It is a map of psychological transformation. The hero does not become who he is in comfort. He becomes who he is by leaving the familiar, facing the ordeal, and returning changed.</p>
+                <p>Every young man who considers entering this programme has already begun that journey, whether he knows it or not. The programme names it, structures it, and supports him through it.</p>
+                <p>This is not merely philosophy. Rogers et al. (2023) found that helping people reframe their life story as a Hero's Journey causally increased meaning in life, improved resilience, and reduced depression. This was identified across eight independent studies published in the <em>Journal of Personality and Social Psychology</em>.</p>
+                <p class="reference">Campbell, J. (1949). The hero with a thousand faces. Pantheon Books.<br>Rogers, B. A., et al. (2023). Seeing your life story as a Hero's Journey increases meaning in life. <em>Journal of Personality and Social Psychology, 125</em>(4), 752–778. https://doi.org/10.1037/pspa0000341</p>
+                <div class="application">
+                    <strong>In the programme</strong>
+                    The 14-week programme is structured explicitly as a Hero's Journey, with clear thresholds, trials, and a culminating passage that marks a real transition.
+                </div>
+            </div>
+        </div>
+
+        <div class="framework">
+            <div class="framework-meta">
+                <div class="framework-number">04</div>
+                <span class="framework-origin">Motivational Psychology</span>
+                <p class="framework-author">Deci & Ryan<br>1985 – present</p>
+                <p class="framework-author">Albert Bandura<br>1925–2021</p>
+            </div>
+            <div class="framework-body">
+                <h2>Self-Determination Theory & Self-Efficacy</h2>
+                <p>SDT is one of the most robust motivational frameworks in psychology. It holds that human beings have three core psychological needs: autonomy (the sense that your choices are your own), competence (being effective and capable at what you do), and relatedness (genuine connection with others).</p>
+                <p>When these needs are met, motivation becomes more autonomous and self-sustaining, and an improvement in psychological health is experienced. When they are chronically unmet, as they often are for young men today, disengagement, depression, and drift follow.</p>
+                <p>Bandura's concept of self-efficacy adds a complementary layer: the belief in one's own capacity to succeed at what one sets out to do. Men higher in self-efficacy approach challenges rather than avoid them, seeing the world as offering possibility rather than threat. This belief supports goal-setting, resilience, and the motivation to initiate action.</p>
+                <p>It functions as a positive cycle. The more self-efficacious a man feels, the more likely he is to actually achieve his goals, and each goal attained further strengthens his sense of self-efficacy going forward.</p>
+                <p class="reference">Deci, E. L., & Ryan, R. M. (1985). Intrinsic motivation and self-determination in human behavior. Plenum Press.<br>Bandura, A. (1997). Self-efficacy: The exercise of control. W. H. Freeman.</p>
+                <div class="application">
+                    <strong>In the programme</strong>
+                    Programme design actively targets all three SDT needs, giving participants agency, challenge and skill development, and works on establishing and growing connectedness through resonating relationships. Self-efficacy is built in parallel, by directly challenging thoughts of self-doubt and reinforcing confidence and competence through the consistent attainment of goals throughout the 14 weeks.
+                </div>
+            </div>
+        </div>
+
+        <div class="framework" id="rites-of-passage">
+            <div class="framework-meta">
+                <div class="framework-number">05</div>
+                <span class="framework-origin">Cultural Anthropology</span>
+                <p class="framework-author">Arnold van Gennep<br>1873–1957</p>
+                <p class="framework-author">Victor Turner<br>1920–1983</p>
+                <p class="framework-author">Mircea Eliade<br>1907–1986</p>
+                <p class="framework-author">David Gilmore<br>1943–present</p>
+            </div>
+            <div class="framework-body">
+                <h2>Rites of Passage</h2>
+                <p>Van Gennep identified the universal three-stage structure of initiation across human cultures: separation from the old identity, a liminal threshold state, and incorporation into a new one. Every traditional society understood that boys do not become men automatically, they require a structured passage, witnessed by the community, that marks the transition as real. Initiation rituals weren't just for the benefit of the individual; they removed the individual's ego so that on return from the process, they felt connected to and a part of their community, ready to offer themselves in service to it. These rites gave the individual purpose and responsibility, and gave the community a valuable and active member who could be steadily relied upon.</p>
+                <p>Victor Turner deepened this, showing that the liminal phase, the threshold between identities, is where genuine transformation occurs, and that it is most powerful when undergone under guidance and structure, and in community with others. Mircea Eliade showed that across virtually every human culture, this passage takes the form of a symbolic death and rebirth, the old self must die before the new one can emerge. Lastly, David Gilmore's cross-cultural fieldwork confirmed this pattern empirically, surveying manhood across dozens of societies and finding that in nearly all of them, manhood is not a biological given, but rather an achieved status. Something earned through tests, ordeals and proofs of worth to the community. </p>
+                <p>Modern Western culture has largely abandoned this structure, leaving young men with no clear threshold to cross, no witness to their becoming, and no community or guide to receive them on the other side. Leaving them needing to prove each day to their society that they are men, through superficial behaviours that are more often than not harmful and maladaptive. Initiation breaks this cycle, allowing men to sit comfortably within their societal role, better able to explore their regenerative side rather than displaying their aggressive and assertive power side.</p>
+                <p class="reference">van Gennep, A. (1960). The rites of passage (M. B. Vizedom & G. L. Caffee, Trans.). University of Chicago Press. (Original work published 1909)<br>Turner, V. (1969). The ritual process: Structure and anti-structure. Aldine Publishing.<br>Eliade, M. (1958). Rites and symbols of initiation: The mysteries of birth and rebirth. Harper & Row.<br>Gilmore, D. D. (1990). Manhood in the making: Cultural concepts of masculinity. Yale University Press.</p>
+                <div class="application">
+                    <strong>In the programme</strong>
+                    The entire 14-week structure is designed as a rite of passage in Van Gennep's tradition. The Crucible serves as the liminal threshold, the symbolic death and rebirth that Eliade identified as the universal core of initiation across every human culture.
+                </div>
+            </div>
+        </div>
+
+       <div class="framework">
+            <div class="framework-meta">
+                <div class="framework-number">06</div>
+                <span class="framework-origin">Developmental Psychology & Dynamic Systems Theory</span>
+                <p class="framework-author">Erik Erikson (1902–1994)<br>Saskia Kunnen & Paul van Geert (2012–present)</p>
+            </div>
+            <div class="framework-body">
+                <h2>Developmental Stages & Dynamic Systems</h2>
+                <p>Erikson mapped the human lifespan into eight stages, each presenting a core psychological challenge that must be navigated to move forward with a stable sense of identity. For young men aged 15 to 30, this typically spans Identity vs Role Confusion and Intimacy vs Isolation, two of the most formative and turbulent passages a person can face.</p>
+                <p>Where Erikson describes the stages themselves, dynamic systems theory explains how a person actually moves between them. Kunnen and van Geert, working specifically on identity development, showed that identity does not progress smoothly from one stage to the next. It behaves like a dynamic system: holding a stable pattern for a period, becoming increasingly variable and emotionally turbulent as that pattern is challenged, then reorganising into a new, more complex configuration once a threshold is crossed.</p>
+                <p>Together, they offer two layers of the same map. Erikson tells you where you are and what the stage is asking of you. Dynamic systems theory tells you why the ground feels unstable right now, and that the instability itself is usually a sign of reorganisation underway, not evidence that something has gone wrong.</p>
+                <p class="reference">Erikson, E. H. (1968). Identity: Youth and crisis. W. W. Norton & Company.<br>Kunnen, E. S., & van Geert, P. (2012). General characteristics of a dynamic systems approach. In E. S. Kunnen (Ed.), A dynamic systems approach to adolescent development (pp. 15-34). Psychology Press.</p>
+                <div class="application">
+                    <strong>In the programme</strong>
+                    Each participant is located within Erikson's framework at the outset, and the destabilisation that shows up along the way is treated as a signal, not a setback. The work is to recognise where you sit in the current stage, understand the turbulence as the sign of a genuine reorganisation underway, and deliberately shape the conditions so it settles into something stronger than where you started.
+                </div>
+            </div>
+        </div>
+
+        <div class="framework">
+            <div class="framework-meta">
+                <div class="framework-number">07</div>
+                <span class="framework-origin">Meaning & Motivation</span>
+                <p class="framework-author">Jacob B. Hirsh<br>2010</p>
+            </div>
+            <div class="framework-body">
+                <h2>Value-based Goal Setting</h2>
+                <p>Hirsh argues that meaning is not found, it is constructed around the goals we adopt. The more central a goal is to our core values and identity, the more weight it carries. Working towards these goals each day, without such a focus on the outcome, offers us consistent neurochemical rewards without the risk of failure to attain an outcome.</p>
+                <p>For young men without clear values or identity goals, life loses gravitational pull. Not because nothing is happening, but because nothing feels like it matters.</p>
+                <p class="reference">Hirsh, J. B. (2010). The weight of being: Psychological perspectives on the existential moment. <em>New Ideas in Psychology, 28</em>(1), 28–36. https://doi.org/10.1016/j.newideapsych.2009.03.001</p>
+                <div class="application">
+                    <strong>In the programme</strong>
+                    A central task of the work is helping each participant identify his highest-level goals, not task-level targets, but the values and identity commitments around which a meaningful life can be organised. When a man knows what he stands for, the weight returns. And with it, direction.
+                </div>
+            </div>
+        </div>
+
+        <div class="framework">
+            <div class="framework-meta">
+                <div class="framework-number">08</div>
+                <span class="framework-origin">Contextual Behavioural Science</span>
+                <p class="framework-author">Steven C. Hayes, Kelly G. Wilson & Kirk D. Strosahl<br>1999</p>
+            </div>
+            <div class="framework-body">
+                <h2>Acceptance and Commitment Therapy</h2>
+                <p>ACT is built on a simple premise: the problem is not difficult thoughts and feelings that come into our attention, it is what we do with them that matters. ACT teaches psychological flexibility, the ability to hold difficult inner experiences without being controlled by them, while moving towards what genuinely matters to you.</p>
+                <p>Its core processes, values clarification, committed action, defusion from unhelpful thoughts, and acceptance of what cannot be changed, sit naturally alongside Stoic philosophy.</p>
+                <p class="reference">Hayes, S. C., Strosahl, K. D., & Wilson, K. G. (1999). Acceptance and commitment therapy: An experiential approach to behavior change. Guilford Press.</p>
+                <div class="application">
+                    <strong>In the programme</strong>
+                    ACT tools are woven throughout the programme. You will learn to observe your thoughts and emotions without being ruled by them, and to act from your values regardless of what you happen to be feeling in the moment.
+                </div>
+            </div>
+        </div>
+
+        <div class="framework">
+            <div class="framework-meta">
+                <div class="framework-number">09</div>
+                <span class="framework-origin">Physiological Health</span>
+                <p class="framework-author">Multiple contributors<br>ongoing</p>
+            </div>
+            <div class="framework-body">
+                <h2>Physiological Health</h2>
+                <p>The body is not separate from the mind. Sleep, movement, nutrition, and sunlight directly regulate neurotransmitter activity, and through that, the quality of your thoughts, the stability of your emotions, and your capacity to regulate your actions. A man who sleeps poorly, moves rarely, eats carelessly, and doesn't venture outside is fighting himself before the day has begun.</p>
+                <p>This is not about aesthetics or performance metrics. It is about understanding that the biological substrate of your psychology is within your control, and that ignoring it while wanting to feel fulfilled and complete is like trying to build a house on with bad quality bricks.</p>
+                <div class="application">
+                    <strong>In the programme</strong>
+                    Physiological habits are introduced and tracked in a daily journal. Sleep, movement, nutrition, and sunlight are treated as foundational building blocks, not optional extras, because the research is clear: you cannot think, feel, or grow your best from a body that is chronically under-resourced.
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-cta">
+            <p>These frameworks don't exist in isolation. In the programme, they form a single integrated path.</p>
+            <a href="pricing-meaning.html" class="cta-btn">Begin the Journey</a>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleStatement() {
+            const body = document.getElementById('statementBody');
+            const btn = document.getElementById('statementToggle');
+            const isOpen = body.classList.toggle('open');
+            btn.textContent = isOpen ? 'Close' : 'Expand';
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+    </script>
+
+</body>
+</html>
