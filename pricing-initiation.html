@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programmes & Contact — Rites of Passage — Tim Newnham Psychology</title>
+    <title>Programmes & Contact — Initiation — Tim Newnham Psychology</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
@@ -227,9 +227,11 @@
         }
 
         .paths-grid {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto 2rem;
         }
 
         .path-card {
@@ -238,7 +240,6 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            max-width: 460px;
             width: 100%;
         }
 
@@ -258,57 +259,6 @@
             font-weight: 600;
             color: var(--text);
             margin-bottom: 1.5rem;
-        }
-
-        .toggle-wrap {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .toggle-label {
-            font-family: 'Cinzel', serif;
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: color 0.2s ease;
-            user-select: none;
-        }
-
-        .toggle-label.active { color: var(--gold); }
-
-        .toggle-track {
-            width: 38px;
-            height: 20px;
-            border-radius: 10px;
-            background: rgba(201,168,76,0.12);
-            border: 1px solid rgba(201,168,76,0.25);
-            position: relative;
-            cursor: pointer;
-            transition: background 0.2s ease, border-color 0.2s ease;
-            flex-shrink: 0;
-        }
-
-        .toggle-track.on {
-            background: rgba(201,168,76,0.2);
-            border-color: rgba(201,168,76,0.5);
-        }
-
-        .toggle-thumb {
-            position: absolute;
-            top: 3px; left: 3px;
-            width: 14px; height: 14px;
-            border-radius: 50%;
-            background: var(--text-muted);
-            transition: transform 0.2s ease, background 0.2s ease;
-        }
-
-        .toggle-track.on .toggle-thumb {
-            transform: translateX(18px);
-            background: var(--gold);
         }
 
         .card-desc {
@@ -438,11 +388,6 @@
             font-family: 'Crimson Pro', serif;
             font-weight: 300;
         }
-
-        .deep-content { display: none; }
-        .deep-content.visible { display: block; }
-        .light-content { display: block; }
-        .light-content.hidden { display: none; }
 
         /* Contact form */
         .contact-section h2 {
@@ -628,7 +573,7 @@
     </nav>
 
     <div class="page-hero">
-        <span class="page-label">Rites of Passage — Programmes & Contact</span>
+        <span class="page-label">Initiation — Programmes & Contact</span>
         <h1>The first conversation costs nothing.</h1>
         <p class="intro">Every participant starts with a no-obligation call to discuss fit, readiness, and which depth suits them currently. Use the form below to begin.</p>
     </div>
@@ -654,55 +599,46 @@
 
         <div class="paths">
             <div class="paths-header">
-                <h2>Rites of Passage.</h2>
+                <h2>Initiation.</h2>
                 <p>A structured rite of passage into adult masculine identity.</p>
             </div>
 
             <div class="paths-grid">
 
                 <div class="path-card">
-                    <span class="card-tier">Path One</span>
+                    <span class="card-tier">Light</span>
                     <div class="card-name">Rites of Passage</div>
+                    <p class="card-age">Recommended: Ages 15–21</p>
+                    <p class="card-desc">A structured introduction to the frameworks, habits, and psychological tools that form the foundation of positive masculine roles in our society. Demanding, yet accessible. Designed with maturity levels in mind, to provide a framework for younger men</p>
+                    <ul class="card-features">
+                        <li>Education on the psychological toolkit</li>
+                        <li>Jungian archetypal work</li>
+                        <li>Homework objectives</li>
+                        <li>Physical challenge components</li>
+                        <li>Weekly one-on-one sessions</li>
+                        <li>Active communication throughout the week</li>
+                        <li>Awarded "The Binding Knot", granting <a href="community.html" style="color: var(--gold); text-decoration: underline;">community access</a></li>
+                    </ul>
+                    <div class="card-price">€1,500</div>
+                    <p class="card-price-note">Full 14-week programme</p>
+                    <a href="#contactForm" class="cta-btn" onclick="document.getElementById('interest').value='initiation-light'">Enquire Now</a>
+                </div>
 
-                    <div class="toggle-wrap">
-                        <span class="toggle-label active" id="label-light">Light</span>
-                        <div class="toggle-track" id="depth-toggle" onclick="toggleDepth()" role="switch" aria-checked="false" tabindex="0">
-                            <div class="toggle-thumb"></div>
-                        </div>
-                        <span class="toggle-label" id="label-deep">Deep</span>
-                    </div>
-
-                    <div class="light-content" id="light-content">
-                        <p class="card-age">Recommended: Ages 15–21</p>
-                        <p class="card-desc">A structured introduction to the frameworks, habits, and psychological tools that form the foundation of positive masculine roles in our society. Demanding, yet accessible. Designed with maturity levels in mind, to provide a framework for younger men</p>
-                        <ul class="card-features">
-                            <li>Education on the psychological toolkit</li>
-                            <li>Jungian archetypal work</li>
-                            <li>Homework objectives</li>
-                            <li>Physical challenge components</li>
-                            <li>Weekly one-on-one sessions</li>
-                            <li>Active communication throughout the week</li>
-                            <li>Awarded "The Binding Knot", granting <a href="community.html" style="color: var(--gold); text-decoration: underline;">community access</a></li>
-                        </ul>
-                        <div class="card-price">€1,500</div>
-                        <p class="card-price-note">Full 14-week programme</p>
-                        <a href="#contactForm" class="cta-btn">Enquire Now</a>
-                    </div>
-
-                    <div class="deep-content" id="deep-content">
-                        <p class="card-age">Recommended: Ages 21+</p>
-                        <p class="card-desc">The full rite of passage. Psychologically demanding, physically rigorous, culminating in the Crucible, a final experience that symbolises the crossing of a threshold. For those ready to reflect on a deeper level.</p>
-                        <ul class="card-features">
-                            <li>Everything in the Light path, but to a deeper level</li>
-                            <li>More challenging homework objectives</li>
-                            <li>Full Crucible experience</li>
-                            <li>Extended reflection exercises</li>
-                            <li>Awarded "The Fellow's Knot", granting more <a href="community.html" style="color: var(--gold); text-decoration: underline;">community responsibilities</a></li>
-                        </ul>
-                        <div class="card-price">€1,500</div>
-                        <p class="card-price-note">Full 14-week programme</p>
-                        <a href="#contactForm" class="cta-btn">Enquire Now</a>
-                    </div>
+                <div class="path-card">
+                    <span class="card-tier">Deep</span>
+                    <div class="card-name">Rites of Passage</div>
+                    <p class="card-age">Recommended: Ages 21+</p>
+                    <p class="card-desc">The full rite of passage. Psychologically demanding, physically rigorous, culminating in the Crucible, a final experience that symbolises the crossing of a threshold. For those ready to reflect on a deeper level.</p>
+                    <ul class="card-features">
+                        <li>Everything in the Light path, but to a deeper level</li>
+                        <li>More challenging homework objectives</li>
+                        <li>Full Crucible experience</li>
+                        <li>Extended reflection exercises</li>
+                        <li>Awarded "The Fellow's Knot", granting more <a href="community.html" style="color: var(--gold); text-decoration: underline;">community responsibilities</a></li>
+                    </ul>
+                    <div class="card-price">€1,500</div>
+                    <p class="card-price-note">Full 14-week programme</p>
+                    <a href="#contactForm" class="cta-btn" onclick="document.getElementById('interest').value='initiation-deep'">Enquire Now</a>
                 </div>
 
             </div>
@@ -742,8 +678,8 @@
                 <div class="form-group">
                     <label for="interest">I'm enquiring about</label>
                     <select id="interest">
-                        <option value="initiation-light" selected>Rites of Passage — Light</option>
-                        <option value="initiation-deep">Rites of Passage — Deep</option>
+                        <option value="initiation-light" selected>Initiation — Light</option>
+                        <option value="initiation-deep">Initiation — Deep</option>
                         <option value="weekly">Weekly Coaching</option>
                         <option value="school">School / Institution enquiry</option>
                         <option value="parent">Enquiring on behalf of someone</option>
@@ -776,36 +712,6 @@
             document.getElementById('navLinks').classList.toggle('open');
         }
 
-        function toggleDepth() {
-            const track = document.getElementById('depth-toggle');
-            const labelLight = document.getElementById('label-light');
-            const labelDeep = document.getElementById('label-deep');
-            const lightContent = document.getElementById('light-content');
-            const deepContent = document.getElementById('deep-content');
-            const isOn = track.classList.toggle('on');
-            track.setAttribute('aria-checked', isOn);
-            if (isOn) {
-                labelLight.classList.remove('active');
-                labelDeep.classList.add('active');
-                lightContent.classList.add('hidden');
-                deepContent.classList.add('visible');
-                document.getElementById('interest').value = 'initiation-deep';
-            } else {
-                labelDeep.classList.remove('active');
-                labelLight.classList.add('active');
-                lightContent.classList.remove('hidden');
-                deepContent.classList.remove('visible');
-                document.getElementById('interest').value = 'initiation-light';
-            }
-        }
-
-        document.getElementById('depth-toggle').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleDepth();
-            }
-        });
-
         function submitForm() {
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
@@ -819,7 +725,7 @@
             const interest = document.getElementById('interest').value;
             const age = document.getElementById('age').value;
 
-            const subject = encodeURIComponent('Enquiry from ' + name + ' (Rites of Passage)');
+            const subject = encodeURIComponent('Enquiry from ' + name + ' (Initiation)');
             const body = encodeURIComponent(
                 'Name: ' + name + '\n' +
                 'Email: ' + email + '\n' +
