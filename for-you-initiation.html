@@ -116,20 +116,23 @@
         }
 
         .page-hero h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            line-height: 1.15;
-            color: var(--text);
-            max-width: 700px;
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--gold-light);
+            max-width: 740px;
             margin: 0 auto 1.5rem;
         }
 
         .page-hero .intro {
-            font-size: clamp(1rem, 1.5vw, 1.2rem);
-            font-weight: 300;
-            font-style: italic;
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            font-weight: 400;
+            font-style: normal;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
             color: var(--text-muted);
             max-width: 580px;
             margin: 0 auto;
@@ -142,9 +145,36 @@
             padding: 6rem 2rem 10rem;
         }
 
+        .pull-quote {
+            max-width: 780px;
+            margin: 0 auto 5rem;
+            border-left: 2px solid var(--gold);
+            padding: 0.5rem 0 0.5rem 2rem;
+        }
+
+        .pull-quote p {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+            font-style: italic;
+            font-weight: 300;
+            color: var(--gold-light);
+            line-height: 1.8;
+        }
+
+        .pull-quote .quote-author {
+            display: block;
+            margin-top: 1.2rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-style: normal;
+        }
+
         .problem-section {
             max-width: 780px;
-            margin: 0 auto 7rem;
+            margin: 0 auto 4rem;
             scroll-margin-top: calc(var(--nav-height) + 1.5rem);
         }
 
@@ -357,6 +387,10 @@
                 border-bottom: 1px solid rgba(201,168,76,0.15);
                 z-index: 99;
             }
+
+            .pull-quote {
+                padding-left: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -377,9 +411,8 @@
     </nav>
 
     <div class="page-hero">
-        <span class="page-label">Is this program for you?</span>
-        <h1>For those yet to face the dragon, or who have faced it and lost</h1>
-        <p class="intro">Today's men are facing a meaning crisis. Here is what that looks like, and how to know if you're in it.</p>
+        <h1>A man who "cannot get it together" is a man who has probably not had the opportunity to undergo ritual initiation into the deep structures of manhood. He remains a boy, not because he wants to, but because no one has shown him the way.</h1>
+        <p class="intro">— Moore & Gillette, King, Warrior, Magician, Lover</p>
     </div>
 
     <div class="content">
@@ -403,6 +436,11 @@
             <p>This gap is currently being filled by social media influencers (Fisher et al., 2025), and there is high quality content out there that genuinely offers some good practical advice and motivation, however the online space is also being subverted by exploitative manosphere influencers, who offer immature and superficial advice on how to be a man in today's society. Outward displays of manhood are used to entice these young men, who are desperate for any kind of guidance, into imitating this behaviour and subscribing to payment plans that promise to help them get "there" (Brito et al., 2024). The chase for material possessions, women pursued purely for sexual intercourse, pure self-reliance and an 'alpha-male' physique (Fisher et al., 2025; Brito et al., 2024) only goes so far, and simply disconnects them even further from experiencing long-lasting meaning, connectedness to the real world, and embracing their societal responsibilities. To young men, however, this path looks far better than no path, which is what is currently being offered to them in their environment.</p>
             <p>But there is a better path to take. Having observed this trend in society around me, I have dedicated the last five years of my life to developing this programme to counter this movement. No fads, no idolisation of myself, no sportscars. I don't do this for fame, or to fund a grandiose lifestyle on Ibiza. I do this because it needs to happen for the world to become a better place. I offer an initiation programme for young men transitioning into their adult societal roles, based on evidence-based research and theory. Without which, men remain in a perpetual state of feeling the need to prove their masculinity by displaying symbolic behaviours outwardly, rather than sitting comfortably in it.</p>
             <p>This is a real, growing problem. The gap needs to be filled. It will either be filled professionally, or it will be exploited indefinitely.</p>
+        </div>
+
+        <div class="pull-quote">
+            <p>In myths the hero is the one who conquers the dragon, not the one who is devoured by it. And yet both have to deal with the same dragon. Also, he is no hero who never met the dragon, or who, if he once saw it, declared afterwards that he saw nothing. Equally, only one who has risked the fight with the dragon and is not overcome by it wins the hoard, the "treasure hard to attain". He alone has a genuine claim to self-confidence, for he has faced the dark ground of his self and thereby has gained himself.</p>
+            <span class="quote-author">— C.G. Jung</span>
         </div>
 
         <div class="chapter-divider"><span>✦</span></div>
@@ -460,6 +498,8 @@
                 <li>Farrell, W., & Gray, J. (2018). <em>The boy crisis: Why our boys are struggling and what we can do about it</em>. BenBella Books.</li>
                 <li>Fisher, K., Rice, S., & Seidler, Z. (2025). <em>Young men's health in a digital world</em>. Movember Institute of Men's Health.</li>
                 <li>Gilmore, D. D. (1990). <em>Manhood in the making: Cultural concepts of masculinity</em>. Yale University Press.</li>
+                <li>Jung, C. G. (1956). <em>Symbols of transformation</em> (R. F. C. Hull, Trans.). Princeton University Press.</li>
+                <li>Moore, R., & Gillette, D. (1990). <em>King, warrior, magician, lover: Rediscovering the archetypes of the mature masculine</em>. HarperSanFrancisco.</li>
                 <li>Putnam, R. D. (2000). <em>Bowling alone: The collapse and revival of American community</em>. Simon & Schuster.</li>
                 <li>Reeves, R. V. (2022). <em>Of boys and men: Why the modern male is struggling, why it matters, and what to do about it</em>. Brookings Institution Press.</li>
                 <li>Rosa, H. (2019). <em>Resonance: A sociology of our relationship to the world</em>. Polity Press.</li>
