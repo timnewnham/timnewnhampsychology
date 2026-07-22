@@ -250,41 +250,6 @@
             opacity: 0.6;
         }
 
-        /* ── TRAITS LIST (personality traits, reuses credentials look) ── */
-        .traits-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-        }
-
-        .traits-list li {
-            font-size: 1rem;
-            font-weight: 300;
-            line-height: 1.7;
-            color: #c8bfaa;
-            padding-left: 1.25rem;
-            position: relative;
-        }
-
-        .traits-list li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-            opacity: 0.6;
-        }
-
-        .traits-list li strong {
-            font-family: 'Cinzel', serif;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-right: 0.5rem;
-        }
-
         /* ── STORY BODY ── */
         .story {
             max-width: 680px;
@@ -448,13 +413,11 @@
                 text-align: center;
             }
 
-            .credentials-list li,
-            .traits-list li {
+            .credentials-list li {
                 padding-left: 0;
             }
 
-            .credentials-list li::before,
-            .traits-list li::before {
+            .credentials-list li::before {
                 content: '';
             }
         }
@@ -494,19 +457,6 @@
         </div>
 
         <div class="who-i-am-credentials">
-            <span class="credentials-label">Personality Traits</span>
-            <ul class="traits-list">
-                <li><strong>Empathetic.</strong> I sit with your struggle without judgement, at whatever pace you need.</li>
-                <li><strong>Direct.</strong> I'll always be honest with you, even when it's not what you want to hear, because I think you deserve that.</li>
-                <li><strong>Present.</strong> When we talk, you have my full attention.</li>
-                <li><strong>Grounded.</strong> I can comfortably hold space for your hardest moments without needing to fix them.</li>
-                <li><strong>Disciplined.</strong> I live by the same theories and principles I ask of you.</li>
-                <li><strong>Humorous.</strong> This work can be heavy, but there is always space for a laugh along the way.</li>
-                <li><strong>Reflective.</strong> I'm always looking at my own blind spots, and correcting course when I get things wrong.</li>
-                <li><strong>Attentive.</strong> I notice more than what's said out loud, and I care enough to explore it.</li>
-                <li><strong>Practical.</strong> I care about frameworks that actually change how you live, not theories that stay on the page.</li>
-            </ul>
-
             <span class="credentials-label">Certifications & Education</span>
             <ul class="credentials-list">
                 <li>BSc Psychology, University of Groningen</li>
