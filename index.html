@@ -126,18 +126,18 @@
             color: var(--text);
         }
 
-       .intro-band p {
-    font-family: 'Crimson Pro', serif;
-    font-size: clamp(0.85rem, 1.3vw, 1.05rem);
-    font-weight: 300;
-    font-style: italic;
-    color: var(--text-muted);
-    letter-spacing: 0.04em;
-    margin-top: 0.6rem;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
+        .intro-band p {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            margin-top: 0.6rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         /* ── TWO-COLUMN CHOOSER ── */
         .chooser-wrap {
@@ -250,6 +250,20 @@
             line-height: 1.7;
         }
 
+        .chooser-col-note {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(0.78rem, 1vw, 0.88rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--gold);
+            text-align: center;
+            max-width: 240px;
+            margin: 1rem auto 0;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(201,168,76,0.25);
+            line-height: 1.5;
+        }
+
         /* ── MOBILE ── */
         .nav-burger {
             display: none;
@@ -306,9 +320,27 @@
                 font-size: 0.5rem;
             }
 
-            .chooser-col-list li {
+            .chooser-col-list li,
+            .chooser-col-note {
                 font-size: 0.68rem;
                 line-height: 1.4;
+            }
+        }
+
+        /* Small phones: the longer link names need a bit more room */
+        @media (max-width: 480px) {
+            .nav-logo {
+                font-size: 0.58rem;
+                letter-spacing: 0.04em;
+            }
+
+            .nav-links {
+                gap: 0.7rem;
+            }
+
+            .nav-links a {
+                font-size: 0.56rem;
+                letter-spacing: 0.02em;
             }
         }
     </style>
@@ -318,22 +350,22 @@
     <nav id="navbar">
         <a href="index.html" class="nav-logo">Tim Newnham Psychology</a>
         <ul class="nav-links">
-            <li><a href="for-you-initiation.html">Rites of Passage</a></li>
-            <li><a href="coming-soon.html">Meaning</a></li>
+            <li><a href="for-you-initiation.html">Masculine Development</a></li>
+            <li><a href="coming-soon.html">Finding Meaning</a></li>
         </ul>
     </nav>
 
     <div class="intro-band">
         <h1>Psychological Coaching</h1>
-        <p>Rites of Passage is for young men seeking structure, challenge, and a genuine passage into adult masculine identity, grounded in initiation traditions and modern psychology. Meaning is for those who feel disconnected, burned out, or stuck, and want to reconnect with a sense of purpose and aliveness.</p>
+        <p>The Masculine Development programme is for young men seeking structure, challenge, and a genuine passage into their more mature masculine identity, grounded in rites of passage traditions and modern psychology. The Finding Meaning programme is for those who feel disconnected, burned out, or stuck, and want to reconnect with a sense of purpose and aliveness.</p>
         <p>Choose your path.</p>
     </div>
 
     <div class="chooser-wrap">
         <div class="chooser">
 
-            <a href="for-you-initiation.html" class="chooser-col" aria-label="Rites of Passage">
-                <div class="chooser-col-title">Rites of Passage</div>
+            <a href="for-you-initiation.html" class="chooser-col" aria-label="Masculine Development">
+                <div class="chooser-col-title">Masculine Development</div>
                 <div class="chooser-image-wrap">
                     <img src="images/Raphael-saint-george.jpg" alt="Raphael, Saint George and the Dragon">
                 </div>
@@ -346,10 +378,11 @@
                     <li>Community and relatedness</li>
                     <li>Discipline and resilience</li>
                 </ul>
+                <p class="chooser-col-note">Completion required to join the community.</p>
             </a>
 
-            <a href="coming-soon.html" class="chooser-col" aria-label="Meaning">
-                <div class="chooser-col-title">Meaning</div>
+            <a href="coming-soon.html" class="chooser-col" aria-label="Finding Meaning">
+                <div class="chooser-col-title">Finding Meaning</div>
                 <div class="chooser-image-wrap">
                     <img src="images/Wanderer_above_the_Sea_of_Fog.jpeg" alt="Caspar David Friedrich, Wanderer above the Sea of Fog">
                 </div>
