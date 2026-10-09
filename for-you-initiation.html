@@ -392,6 +392,135 @@
                 padding-left: 1.2rem;
             }
         }
+
+        /* ── PATHS DIAGRAM ── */
+        .paths {
+            --warn: #B5554A;
+            --warn-light: #D3857A;
+            max-width: 1040px;
+            margin: 0 auto 6rem;
+            display: grid;
+            grid-template-columns: 1fr 48px 1fr 48px 1fr;
+            grid-template-rows: auto 56px auto;
+            align-items: stretch;
+        }
+
+        .path-card {
+            border: 1px solid rgba(201,168,76,0.25);
+            background: rgba(255,255,255,0.015);
+            padding: 1.8rem 1.5rem;
+        }
+
+        .path-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .path-sub {
+            font-style: italic;
+            font-weight: 300;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 0.3rem;
+        }
+
+        .path-card ul {
+            list-style: none;
+            margin-top: 1.2rem;
+        }
+
+        .path-card li {
+            font-size: 0.98rem;
+            font-weight: 300;
+            line-height: 1.5;
+            color: #c8bfaa;
+            padding-left: 1.3rem;
+            position: relative;
+        }
+
+        .path-card li + li { margin-top: 0.45rem; }
+
+        .path-card li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .path-card.warn {
+            border-color: rgba(181,85,74,0.55);
+        }
+        .path-card.warn h3 { color: var(--warn-light); }
+        .path-card.warn li::before { color: var(--warn); }
+
+        .path-card.good {
+            border-color: var(--gold);
+            box-shadow: 0 0 50px rgba(201,168,76,0.08);
+        }
+        .path-card.good h3 { color: var(--gold-light); }
+        .path-card.good li::before { color: var(--gold); }
+        .path-card.good ul {
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-start { grid-column: 1; grid-row: 1 / 4; }
+        .card-iso   { grid-column: 3; grid-row: 1; }
+        .card-man   { grid-column: 5; grid-row: 1; }
+        .card-dev   { grid-column: 3 / 6; grid-row: 3; }
+
+        .arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .arrow svg {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .arrow.warn { color: var(--warn); }
+        .arrow.good { color: var(--gold); }
+
+        .a-start-iso { grid-column: 2; grid-row: 1; }
+        .a-start-dev { grid-column: 2; grid-row: 3; }
+        .a-iso-man   { grid-column: 4; grid-row: 1; }
+        .a-iso-dev   { grid-column: 3; grid-row: 2; }
+        .a-man-dev   { grid-column: 5; grid-row: 2; }
+
+        .arrow-mob { display: none; }
+
+        @media (max-width: 860px) {
+            .paths {
+                display: flex;
+                flex-direction: column;
+                max-width: 480px;
+            }
+            .arrow-desk { display: none; }
+            .arrow-mob {
+                display: flex;
+                flex-direction: column;
+                padding: 0.6rem 0;
+            }
+            .arrow-label {
+                font-family: 'Cinzel', serif;
+                font-size: 0.6rem;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                margin-top: 0.3rem;
+            }
+            .path-card { padding: 1.5rem 1.2rem; }
+        }
     </style>
 </head>
 <body>
@@ -416,6 +545,102 @@
     </div>
 
     <div class="content">
+
+        <!-- PATHS DIAGRAM -->
+        <div class="paths" role="group" aria-label="The paths young men take: isolation, the manosphere, or masculine development">
+
+            <div class="path-card card-start">
+                <h3>Young Men</h3>
+                <ul>
+                    <li>Lack of mature guidance and developmental support</li>
+                    <li>Rapidly changing system that doesn't acknowledge the struggles men face or offer help</li>
+                    <li>Uncertain and unpredictable future</li>
+                    <li>Modern influences, such as social media, access to porn and unlimited distraction and entertainment</li>
+                    <li>Lack of meaning (purpose, significance, coherence)</li>
+                    <li>Masculinity is often portrayed negatively, with little positive guidance offered in its place</li>
+                    <li>Support and targeted programmes increasingly go to other groups, while boys and men are falling behind</li>
+                    <li>School systems that aren't tailored to masculine ways of learning</li>
+                </ul>
+            </div>
+
+            <div class="arrow arrow-desk warn a-start-iso" aria-hidden="true">
+                <svg width="40" height="24" viewBox="0 0 40 24"><path d="M3 12 H35 M27 5 L36 12 L27 19"/></svg>
+            </div>
+            <div class="arrow arrow-desk good a-start-dev" aria-hidden="true">
+                <svg width="40" height="24" viewBox="0 0 40 24"><path d="M3 12 H35 M27 5 L36 12 L27 19"/></svg>
+            </div>
+            <div class="arrow arrow-mob warn" aria-hidden="true">
+                <svg width="24" height="40" viewBox="0 0 24 40"><path d="M12 3 V35 M5 27 L12 36 L19 27"/></svg>
+            </div>
+
+            <div class="path-card warn card-iso">
+                <h3>Isolation</h3>
+                <p class="path-sub">Identity and role ambiguity</p>
+                <ul>
+                    <li>Weak sense of self</li>
+                    <li>Lack of masculine values</li>
+                    <li>Avoidance of social roles</li>
+                    <li>Isolation from relationships</li>
+                    <li>Rejection of the world because of misaligned values and morals</li>
+                    <li>Lack of drive</li>
+                    <li>Apathy and anhedonia</li>
+                    <li>Individual in search of a collective</li>
+                    <li>Depression and nihilism</li>
+                    <li>Ideologically determined identity (anti-society)</li>
+                </ul>
+            </div>
+
+            <div class="arrow arrow-desk warn a-iso-man" aria-hidden="true">
+                <svg width="40" height="24" viewBox="0 0 40 24"><path d="M3 12 H35 M27 5 L36 12 L27 19"/></svg>
+            </div>
+            <div class="arrow arrow-desk good a-iso-dev" aria-hidden="true">
+                <svg width="24" height="40" viewBox="0 0 24 40"><path d="M12 3 V35 M5 27 L12 36 L19 27"/></svg>
+            </div>
+            <div class="arrow arrow-mob warn" aria-hidden="true">
+                <svg width="24" height="40" viewBox="0 0 24 40"><path d="M12 3 V35 M5 27 L12 36 L19 27"/></svg>
+            </div>
+
+            <div class="path-card warn card-man">
+                <h3>Manosphere</h3>
+                <ul>
+                    <li>Ego inflation</li>
+                    <li>Immature and performative masculinity</li>
+                    <li>Persona adopted to mask a lack of authentic self</li>
+                    <li>Pseudo-relatedness: relationships with others adopting fake personas, but in reality a greater feeling of isolation</li>
+                    <li>Immoral and egotistical values</li>
+                    <li>Drive based on material gain and extrinsic motivation</li>
+                    <li>Denial of emotions</li>
+                    <li>Individualistic</li>
+                    <li>Hedonistic happiness</li>
+                    <li>Ideologically determined identity</li>
+                </ul>
+            </div>
+
+            <div class="arrow arrow-desk good a-man-dev" aria-hidden="true">
+                <svg width="24" height="40" viewBox="0 0 24 40"><path d="M12 3 V35 M5 27 L12 36 L19 27"/></svg>
+            </div>
+            <div class="arrow arrow-mob good" aria-hidden="true">
+                <svg width="24" height="40" viewBox="0 0 24 40"><path d="M12 3 V35 M5 27 L12 36 L19 27"/></svg>
+                <span class="arrow-label">Possible from any stage</span>
+            </div>
+
+            <div class="path-card good card-dev">
+                <h3>Masculine Development</h3>
+                <ul>
+                    <li>Balanced ego with an integrated shadow</li>
+                    <li>Mature and embodied masculinity</li>
+                    <li>Integration of personas into an authentic self</li>
+                    <li>True relationships</li>
+                    <li>Morals and values greater than oneself</li>
+                    <li>Drive based on values</li>
+                    <li>Emotional regulation and connection</li>
+                    <li>A member of the collective</li>
+                    <li>Eudaimonic happiness</li>
+                    <li>Identity emerges from the authentic self</li>
+                </ul>
+            </div>
+
+        </div>
 
         <div class="problem-section" id="problem">
             <h2>Today's men face a meaning crisis.</h2>
