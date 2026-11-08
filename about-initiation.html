@@ -258,8 +258,158 @@
             padding: 6rem 2rem 10rem;
         }
 
-        .story-chapter {
+        /* Brief about-me intro (always visible) */
+        .about-brief {
+            margin-bottom: 4rem;
+        }
+
+        .about-brief h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1.8rem;
+            line-height: 1.3;
+        }
+
+        .about-brief p {
+            font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+            font-weight: 300;
+            line-height: 2;
+            color: #c8bfaa;
+        }
+
+        /* ── JOURNEY DROPDOWN ── */
+        .journey {
+            border-top: 1px solid rgba(201,168,76,0.3);
+            border-bottom: 1px solid rgba(201,168,76,0.3);
             margin-bottom: 5rem;
+        }
+
+        .journey summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: 2rem 0;
+            user-select: none;
+        }
+
+        .journey summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .journey-title {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .journey-title .chapter-label {
+            margin-bottom: 0;
+        }
+
+        .journey-title h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .journey-hint {
+            font-size: 1rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--text-muted);
+        }
+
+        .journey-hint .when-open { display: none; }
+        .journey[open] .journey-hint .when-open { display: inline; }
+        .journey[open] .journey-hint .when-closed { display: none; }
+
+        .journey-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(201,168,76,0.5);
+            border-radius: 50%;
+            position: relative;
+            transition: transform 0.4s ease, background 0.3s ease;
+        }
+
+        .journey-icon::before,
+        .journey-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 14px;
+            height: 1px;
+            background: var(--gold);
+            transform: translate(-50%, -50%);
+            transition: transform 0.4s ease;
+        }
+
+        .journey-icon::after {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        .journey[open] .journey-icon {
+            transform: rotate(180deg);
+        }
+
+        .journey[open] .journey-icon::after {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        .journey summary:hover .journey-title h2 {
+            color: var(--gold-light);
+        }
+
+        .journey summary:hover .journey-icon {
+            background: rgba(201,168,76,0.08);
+        }
+
+        .journey summary:focus-visible {
+            outline: 1px solid var(--gold);
+            outline-offset: 6px;
+        }
+
+        .journey-content {
+            padding: 2rem 0 4rem;
+            animation: journeyReveal 0.6s ease both;
+        }
+
+        @keyframes journeyReveal {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .journey-close {
+            display: block;
+            margin: 3rem auto 0;
+            background: none;
+            border: 1px solid rgba(201,168,76,0.4);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.8rem 1.8rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .journey-close:hover {
+            background: rgba(201,168,76,0.1);
+        }
+
+        .story-chapter {
+            margin-bottom: 0;
         }
 
         .chapter-label {
@@ -338,7 +488,6 @@
         .story-cta {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(201,168,76,0.15);
         }
 
         .story-cta p {
@@ -422,6 +571,22 @@
                 content: '';
             }
         }
+
+        @media (max-width: 600px) {
+            .story {
+                padding: 4rem 1.25rem 6rem;
+            }
+
+            .chapter-label {
+                font-size: 0.85rem;
+                letter-spacing: 0.2em;
+            }
+
+            .journey-icon {
+                width: 38px;
+                height: 38px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -486,55 +651,82 @@
     <!-- STORY -->
     <article class="story">
 
-      <!-- Chapter I -->
-        <div class="story-chapter">
-            <span class="chapter-label">I — The Ordinary World</span>
-            <h2>Growing up, I had no map.</h2>
-            <p>I was raised in Australia, growing up in a divorced household with what felt like no firm place to call home. The world around me expected boys to figure things out alone, while vilifying them for any behaviour that comes with being a man. Yet nobody talked about what it meant to become a man in a positive sense. There was no structure to follow, no one to guide us into the role. You were just supposed to know. Of course, most of us didn't.</p>
-            <p>As I approached my late teens, I was still missing that structure and guidance, as well as a feeling that I wanted a trial to test my resolve and prove I was capable. When I left school, I started working as an electrician. But I knew, deep down, something was missing, something more fulfilling. A sense of purpose, a challenge to overcome, an adventure to experience. I wanted to prove my worth to myself and my community, and most importantly, to show everyone, including myself, that I was a man.</p>
+        <!-- Brief About Me (always visible) -->
+        <div class="about-brief">
+            <span class="chapter-label">In Brief</span>
+            <h2>Who I am, and why I do this work</h2>
+            <p>I grew up in Australia without a clear map into manhood, so I went looking for one in the Army. As an infantry soldier I found brotherhood, purpose and a deployment to Afghanistan, but I also came out the other side numb, angry and unsure of who I was. A year of travel, years of coaching, and a psychology degree at the University of Groningen taught me what that path had been missing. Today I help young men find the structure, meaning and guidance I was looking for, in a way that builds them up rather than hardens them.</p>
         </div>
 
-        <div class="chapter-divider"><span>✦</span></div>
+        <!-- My Journey to Here (dropdown) -->
+        <details class="journey" id="journey">
+            <summary>
+                <div class="journey-title">
+                    <span class="chapter-label">The Full Story</span>
+                    <h2>My Journey to Here</h2>
+                    <span class="journey-hint">
+                        <span class="when-closed">Four chapters. Click to read.</span>
+                        <span class="when-open">Click to close.</span>
+                    </span>
+                </div>
+                <span class="journey-icon" aria-hidden="true"></span>
+            </summary>
 
-        <!-- Chapter II -->
-        <div class="story-chapter">
-            <span class="chapter-label">II — The Call</span>
-            <h2>Looking up at the moon</h2>
-            <p>I remember one day, whilst wiring up electrical generators, I placed my tools down and looked up at the moon. I felt overwhelmed with excitement and possibility. I knew I had to get out of there and see the world. A calling to adventure, one I couldn't ignore.</p>
-            <p>Since I was a boy, I'd held deep respect for warriors, especially the ANZACs (Australian and New Zealand Army Corps). They embodied everything I wanted to be as a man: hardy, brave, adventurous, selfless. And so, that same afternoon, I applied to join the Australian Army.</p>
-            <p>I enlisted as an infantryman. What followed was years of physical and psychological pressure that shaped who I am today. During my service, I deployed to Afghanistan, completed a reconnaissance selection course including selection into the platoon, and was quickly promoted into leadership positions.</p>
+            <div class="journey-content">
 
-            <div class="pull-quote">
-                <p>For the first time in my life, I understood what it meant to be part of something larger than myself, to be trusted, heard, and respected.</p>
+                <!-- Chapter I -->
+                <div class="story-chapter">
+                    <span class="chapter-label">I — The Ordinary World</span>
+                    <h2>Growing up, I had no map.</h2>
+                    <p>I was raised in Australia, growing up in a divorced household with what felt like no firm place to call home. The world around me expected boys to figure things out alone, while vilifying them for any behaviour that comes with being a man. Yet nobody talked about what it meant to become a man in a positive sense. There was no structure to follow, no one to guide us into the role. You were just supposed to know. Of course, most of us didn't.</p>
+                    <p>As I approached my late teens, I was still missing that structure and guidance, as well as a feeling that I wanted a trial to test my resolve and prove I was capable. When I left school, I started working as an electrician. But I knew, deep down, something was missing, something more fulfilling. A sense of purpose, a challenge to overcome, an adventure to experience. I wanted to prove my worth to myself and my community, and most importantly, to show everyone, including myself, that I was a man.</p>
+                </div>
+
+                <div class="chapter-divider"><span>✦</span></div>
+
+                <!-- Chapter II -->
+                <div class="story-chapter">
+                    <span class="chapter-label">II — The Call</span>
+                    <h2>Looking up at the moon</h2>
+                    <p>I remember one day, whilst wiring up electrical generators, I placed my tools down and looked up at the moon. I felt overwhelmed with excitement and possibility. I knew I had to get out of there and see the world. A calling to adventure, one I couldn't ignore.</p>
+                    <p>Since I was a boy, I'd held deep respect for warriors, especially the ANZACs (Australian and New Zealand Army Corps). They embodied everything I wanted to be as a man: hardy, brave, adventurous, selfless. And so, that same afternoon, I applied to join the Australian Army.</p>
+                    <p>I enlisted as an infantryman. What followed was years of physical and psychological pressure that shaped who I am today. During my service, I deployed to Afghanistan, completed a reconnaissance selection course including selection into the platoon, and was quickly promoted into leadership positions.</p>
+
+                    <div class="pull-quote">
+                        <p>For the first time in my life, I understood what it meant to be part of something larger than myself, to be trusted, heard, and respected.</p>
+                    </div>
+
+                    <p>It was there that I found brotherhood, the kind of connection that only forms through shared hardship overcome together. I'd found my home, a place of challenge and discomfort, but also a structure that supported me and guided me towards what I saw as my masculine self. The world made sense to me again. After some time, however, the veil began to wear thin. As I faced burnout, both physically and mentally, questions began to surface: Why do I feel so numb? Why am I so angry? And, why do I seek to destroy instead of regenerate?</p>
+
+                    <p>Years later, through my studies, I came to understand that the military is not a complete initiation for young men. Indeed, it connects you to your masculine side, but only through an immature pathway, one that hardens your shell and leaves you carrying anger you don't know how to put down. The rest of the process is undeveloped, and so it leaves you emotionally and spiritually incomplete. It doesn't care about how you feel doing it, or ask how you'll deal with what's left of you afterwards. It just asks that you complete the mission, whatever it takes.</p>
+                </div>
+
+                <div class="chapter-divider"><span>✦</span></div>
+
+                <!-- Chapter III -->
+                <div class="story-chapter">
+                    <span class="chapter-label">III — The Road of Trials</span>
+                    <h2>Life afterwards had its own challenges to overcome</h2>
+                    <p>After returning from deployment, it was time to hang up the boots and part ways with the army. The transition out of the military is disorienting. You have to find your feet again. The structure disappears. The identity shifts, as you go from a somebody to a nobody. The brotherhood is gone. The purpose, once so clear, has no obvious replacement. Everything else feels meaningless, empty, and boring. And the only tool you have for handling what you feel is to block it out, or let it out as anger.</p>
+                    <p>It was in this moment that I hit rock bottom. What would I do? Who would I become? What I needed was a guide, someone to point the way into the next chapter, and to teach me how to work with my thoughts and emotions instead of against them. But I was too proud to ask for help.</p>
+                    <p>After months of rumination, I bought a one-way ticket to South America and travelled north for a year. A distraction, but one that paid off. It became a time of reflection and healing, a way back into a world outside the military. I sat in deep thought on countless rocks, read widely, and met people who helped me learn to experience my emotions again, to open myself up to the world.</p>
+                    <p>Eventually, a realisation struck me. This life of travel wouldn't fulfill me. It served its purpose, but it was lacking in meaning. I had joined the Army to make the world a better place, but in reality, it had brought destructive outcomes to others and to myself. After finding the space to forgive myself, I understood it was time to return to my original path: to help people, this time in a way that was mature and regenerative rather than destructive.</p>
+                </div>
+
+                <div class="chapter-divider"><span>✦</span></div>
+
+                <!-- Chapter IV -->
+                <div class="story-chapter">
+                    <span class="chapter-label">IV — The Return</span>
+                    <h2>An integration of my experiences</h2>
+                    <p>Back in Australia, I began on the path to help others by using skills I already had developed. I started fitness and nutrition coaching, and found real satisfaction in watching people grow. But something was still missing. I knew I was circling something deeper.</p>
+                    <p>I saw that the people I was helping weren't just struggling with their bodies. They were mentally and spiritually hollow. So, I asked myself: what good is it to guide someone toward a healthy lifestyle if they still lack meaning in their life? If they still binge eat in the evening just to feel something, or drink excessively so that they can disconnect from their reality? Looking around me, I also saw many of my good friends grapple with the same deeper existential questions, questions I felt too, but didn't yet know how to answer.</p>
+                    <p>This set me on a path of formal education within the Netherlands, where I studied psychology at the University of Groningen. That path is how this programme came to be, a pragmatic programme combining all of the theories and methods I encountered that were important for young men, theories and methods I apply to my own daily living as I continue to work on improving myself. And now, I feel ready to pass on these lessons to others.</p>
+                </div>
+
+                <button type="button" class="journey-close" onclick="closeJourney()">Close the Story ▲</button>
             </div>
-
-            <p>It was there that I found brotherhood, the kind of connection that only forms through shared hardship overcome together. I'd found my home, a place of challenge and discomfort, but also a structure that supported me and guided me towards what I saw as my masculine self. The world made sense to me again. After some time, however, the veil began to wear thin. As I faced burnout, both physically and mentally, questions began to surface: Why do I feel so numb? Why am I so angry? And, why do I seek to destroy instead of regenerate?</p>
-
-            <p>Years later, through my studies, I came to understand that the military is not a complete initiation for young men. Indeed, it connects you to your masculine side, but only through an immature pathway, one that hardens your shell and leaves you carrying anger you don't know how to put down. The rest of the process is undeveloped, and so it leaves you emotionally and spiritually incomplete. It doesn't care about how you feel doing it, or ask how you'll deal with what's left of you afterwards. It just asks that you complete the mission, whatever it takes.</p>
-        </div>
-
-        <div class="chapter-divider"><span>✦</span></div>
-
-        <!-- Chapter III -->
-        <div class="story-chapter">
-            <span class="chapter-label">III — The Road of Trials</span>
-            <h2>Life afterwards had its own challenges to overcome</h2>
-            <p>After returning from deployment, it was time to hang up the boots and part ways with the army. The transition out of the military is disorienting. You have to find your feet again. The structure disappears. The identity shifts, as you go from a somebody to a nobody. The brotherhood is gone. The purpose, once so clear, has no obvious replacement. Everything else feels meaningless, empty, and boring. And the only tool you have for handling what you feel is to block it out, or let it out as anger.</p>
-            <p>It was in this moment that I hit rock bottom. What would I do? Who would I become? What I needed was a guide, someone to point the way into the next chapter, and to teach me how to work with my thoughts and emotions instead of against them. But I was too proud to ask for help.</p>
-            <p>After months of rumination, I bought a one-way ticket to South America and travelled north for a year. A distraction, but one that paid off. It became a time of reflection and healing, a way back into a world outside the military. I sat in deep thought on countless rocks, read widely, and met people who helped me learn to experience my emotions again, to open myself up to the world.</p>
-            <p>Eventually, a realisation struck me. This life of travel wouldn't fulfill me. It served its purpose, but it was lacking in meaning. I had joined the Army to make the world a better place, but in reality, it had brought destructive outcomes to others and to myself. After finding the space to forgive myself, I understood it was time to return to my original path: to help people, this time in a way that was mature and regenerative rather than destructive.</p>
-        </div>
-
-        <div class="chapter-divider"><span>✦</span></div>
-
-        <!-- Chapter IV -->
-<div class="story-chapter">
-    <span class="chapter-label">IV — The Return</span>
-    <h2>An integration of my experiences</h2>
-    <p>Back in Australia, I began on the path to help others by using skills I already had developed. I started fitness and nutrition coaching, and found real satisfaction in watching people grow. But something was still missing. I knew I was circling something deeper.</p>
-    <p>I saw that the people I was helping weren't just struggling with their bodies. They were mentally and spiritually hollow. So, I asked myself: what good is it to guide someone toward a healthy lifestyle if they still lack meaning in their life? If they still binge eat in the evening just to feel something, or drink excessively so that they can disconnect from their reality? Looking around me, I also saw many of my good friends grapple with the same deeper existential questions, questions I felt too, but didn't yet know how to answer.</p>
-    <p>This set me on a path of formal education within the Netherlands, where I studied psychology at the University of Groningen. That path is how this programme came to be, a pragmatic programme combining all of the theories and methods I encountered that were important for young men, theories and methods I apply to my own daily living as I continue to work on improving myself. And now, I feel ready to pass on these lessons to others.</p>
-</div>
+        </details>
 
         <!-- CTA -->
         <div class="story-cta">
@@ -547,6 +739,15 @@
     <script>
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        // Close the journey dropdown and scroll back to its header
+        function closeJourney() {
+            const journey = document.getElementById('journey');
+            journey.open = false;
+            const navHeight = 70;
+            const top = journey.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+            window.scrollTo({ top: top, behavior: 'smooth' });
         }
     </script>
 
